@@ -31,15 +31,12 @@ public class VentanaIngresoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-    @FXML
-    Pane root;
 
     @FXML
     public void ingresar(ActionEvent e) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/src/main/resources/com.pooespol.poo4_proy2p_luna_orrala_sambonino/VentanaUsuario.fxml"));
         try {
-
-            root = loader.load();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("VentanaUsuario.fxml"));
+            Pane root = loader.load();
             VentanaUsuarioController controlador = loader.getController();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
@@ -48,7 +45,7 @@ public class VentanaIngresoController implements Initializable {
             stage.showAndWait();
 
         } catch (IOException ex) {
-            ex.printStackTrace();
+            System.out.println("Error");
         }
 
     }
