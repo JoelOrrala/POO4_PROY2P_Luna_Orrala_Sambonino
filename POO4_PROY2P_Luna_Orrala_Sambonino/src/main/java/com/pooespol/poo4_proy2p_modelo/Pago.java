@@ -6,6 +6,7 @@ package com.pooespol.poo4_proy2p_modelo;
 
 import java.util.Date;
 
+
 /**
  *
  * @author joelorrala
@@ -18,8 +19,8 @@ public class Pago {
     private Date fecha;
     private TipoPago tipo;
     
-    public Pago(String idPago, Cliente cliente, Pedido pedido, double totalPagar, Date fecha, TipoPago tipo){
-        this.idPago = idPago;
+    public Pago(Cliente cliente, Pedido pedido, double totalPagar, Date fecha, TipoPago tipo){
+        this.idPago = generarCodigoPago();
         this.cliente = cliente;
         this.pedido = pedido;
         this.totalPagar = totalPagar;
@@ -73,6 +74,16 @@ public class Pago {
     
     public void setTipoPago(TipoPago tipo){
         this.tipo = tipo;
+    }
+    
+    private String generarCodigoPago() {
+        String codigo = "PG";
+        
+        for (int i = 1; i <= 4; i++) {
+            int numero = (int)(Math.random()*10);
+            codigo += numero;
+        }
+        return codigo;
     }
     
 }

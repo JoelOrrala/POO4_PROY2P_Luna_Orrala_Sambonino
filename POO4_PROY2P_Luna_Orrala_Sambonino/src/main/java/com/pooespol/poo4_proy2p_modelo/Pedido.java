@@ -16,8 +16,8 @@ public class Pedido {
     private Cliente cliente;
     private ArrayList<PlatoEscogido> listaPlatos;
 
-    public Pedido(String idPedido, Cliente cliente, ArrayList<PlatoEscogido> listaPlatos) {
-        this.idPedido = idPedido;
+    public Pedido(Cliente cliente, ArrayList<PlatoEscogido> listaPlatos) {
+        this.idPedido = generarCodigoPedido();
         this.cliente = cliente;
         this.listaPlatos = listaPlatos;
     }
@@ -44,5 +44,15 @@ public class Pedido {
 
     public void setListaPlatos(ArrayList<PlatoEscogido> listaPlatos) {
         this.listaPlatos = listaPlatos;
+    }
+    
+    private String generarCodigoPedido() {
+        String codigo = "PD";
+        
+        for (int i = 1; i <= 4; i++) {
+            int numero = (int)(Math.random()*10);
+            codigo += numero;
+        }
+        return codigo;
     }
 }

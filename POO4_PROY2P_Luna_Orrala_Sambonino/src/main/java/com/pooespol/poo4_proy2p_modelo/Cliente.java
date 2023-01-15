@@ -4,6 +4,13 @@
  */
 package com.pooespol.poo4_proy2p_modelo;
 
+import com.pooespol.poo4_proy2p_luna_orrala_sambonino.App;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+
 /**
  *
  * @author joelorrala
@@ -42,5 +49,19 @@ public class Cliente {
 
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
+    }
+    
+    public static ArrayList<Cliente> leerClientes() {
+        ArrayList<Cliente> listCli = new ArrayList<>();
+        try ( BufferedReader br = new BufferedReader(new FileReader(App.pathFiles + "usuarios.txt", StandardCharsets.UTF_8))) {
+            String linea = br.readLine();
+            while ((linea = br.readLine()) != null) {
+                String[] sep = linea.trim().strip().split(",");
+                listCli.add(new Cliente(sep[0], sep[1], sep[2]));
+            }
+        } catch (IOException ex) {
+            System.out.println("No se pudo leer el archivo");
+        }
+        return listCli;
     }
 }

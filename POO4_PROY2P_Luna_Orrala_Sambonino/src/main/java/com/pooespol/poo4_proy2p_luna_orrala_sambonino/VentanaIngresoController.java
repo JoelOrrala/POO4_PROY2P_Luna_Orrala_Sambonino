@@ -4,8 +4,10 @@
  */
 package com.pooespol.poo4_proy2p_luna_orrala_sambonino;
 
+import com.pooespol.poo4_proy2p_modelo.Cliente;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,7 +25,8 @@ import javafx.stage.Stage;
  * @author Mr Arana
  */
 public class VentanaIngresoController implements Initializable {
-
+    
+    private static ArrayList<Cliente> listClientes = Cliente.leerClientes();
     /**
      * Initializes the controller class.
      */
