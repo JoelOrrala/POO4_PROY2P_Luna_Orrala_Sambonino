@@ -40,8 +40,9 @@ public class VentanaIngresoController implements Initializable {
             VentanaUsuarioController controlador = loader.getController();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL);
+//            stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(scene);
+            stage.setTitle("The Good Burger Restaurant");
             stage.showAndWait();
 
         } catch (IOException ex) {

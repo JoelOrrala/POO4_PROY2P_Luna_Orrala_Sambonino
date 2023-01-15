@@ -6,6 +6,8 @@ package com.pooespol.poo4_proy2p_luna_orrala_sambonino;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 /**
@@ -21,6 +23,15 @@ public class VentanaUsuarioController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
+    
+    @FXML
+    public void encontrarLocalCercano(ActionEvent e){
+        
+    }
+    @FXML
+    public void realizarPedido(ActionEvent e){
+        
+    }
     
 }
