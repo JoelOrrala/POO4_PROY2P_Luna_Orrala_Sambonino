@@ -4,6 +4,10 @@
  */
 package com.pooespol.poo4_proy2p_modelo;
 
+import com.pooespol.poo4_proy2p_luna_orrala_sambonino.App;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Date;
 
 
@@ -85,5 +89,12 @@ public class Pago {
         }
         return codigo;
     }
-    
+
+    public void guardarPago() {
+        try ( BufferedWriter bw = new BufferedWriter(new FileWriter(App.pathFiles + "pagos.txt", true))) {
+            bw.write(idPago + "," + pedido.getIdPedido() + "," + cliente.getNombre() + "," + totalPagar + "," + fecha + "," + tipo + "\n");
+        } catch (IOException ex) {
+            System.out.println("No se pudo escribir en el archivo pagos.txt");
+        }
+    }
 }

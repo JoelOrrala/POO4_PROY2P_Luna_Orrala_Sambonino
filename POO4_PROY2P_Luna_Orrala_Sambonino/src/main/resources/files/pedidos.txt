@@ -1,0 +1,1 @@
+Idpedido,nombreCliente,total
