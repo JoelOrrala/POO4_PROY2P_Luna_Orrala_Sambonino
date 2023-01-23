@@ -64,4 +64,14 @@ public class Cliente {
         }
         return listCli;
     }
+    
+    public static boolean verificarCliente(ArrayList<Cliente> listaClientes, String usuario, String contrasenia) {
+        boolean encontrado = false;
+        for (Cliente c : listaClientes) {
+            if (c.getUsuario().equals(usuario) && c.getContrasenia().equals(contrasenia)) {
+                encontrado = true;
+            }
+        }
+        return encontrado;
+    }
 }
