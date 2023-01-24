@@ -25,8 +25,9 @@ import javafx.stage.Stage;
  * @author Mr Arana
  */
 public class VentanaIngresoController implements Initializable {
-    
+
     private static ArrayList<Cliente> listClientes = Cliente.leerClientes();
+
     /**
      * Initializes the controller class.
      */

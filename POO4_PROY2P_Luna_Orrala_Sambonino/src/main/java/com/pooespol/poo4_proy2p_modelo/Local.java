@@ -4,6 +4,13 @@
  */
 package com.pooespol.poo4_proy2p_modelo;
 
+import com.pooespol.poo4_proy2p_luna_orrala_sambonino.App;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+
 /**
  *
  * @author joelorrala
@@ -62,5 +69,25 @@ public class Local {
 
     public void setCoordenadaY(double coordenadaY) {
         this.coordenadaY = coordenadaY;
+    }
+
+    public static ArrayList<Local> leerLocales() {
+        ArrayList<Local> listLocales = new ArrayList<>();
+        try ( BufferedReader br = new BufferedReader(new FileReader(App.pathFiles + "locales.txt", StandardCharsets.UTF_8))) {
+            String linea = "";
+            while ((linea = br.readLine()) != null) {
+                String[] lcl = linea.strip().split(",");
+                String name = lcl[0];
+                String address = lcl[1];
+                String shedule = lcl[2];
+                double x = Double.parseDouble(lcl[3]);
+                double y = Double.parseDouble(lcl[4]);
+                Local l = new Local(name, address, shedule, x, y);
+                listLocales.add(l);
+            }
+        } catch (IOException ex) {
+            System.out.println("No se pudo leer el archivo");
+        }
+        return listLocales;
     }
 }

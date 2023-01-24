@@ -50,7 +50,7 @@ public class Cliente {
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
     }
-    
+
     public static ArrayList<Cliente> leerClientes() {
         ArrayList<Cliente> listCli = new ArrayList<>();
         try ( BufferedReader br = new BufferedReader(new FileReader(App.pathFiles + "usuarios.txt", StandardCharsets.UTF_8))) {
@@ -64,7 +64,7 @@ public class Cliente {
         }
         return listCli;
     }
-    
+
     public static boolean verificarCliente(ArrayList<Cliente> listaClientes, String usuario, String contrasenia) {
         boolean encontrado = false;
         for (Cliente c : listaClientes) {

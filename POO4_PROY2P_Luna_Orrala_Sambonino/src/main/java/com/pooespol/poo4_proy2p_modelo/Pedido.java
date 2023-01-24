@@ -17,7 +17,7 @@ import java.util.ArrayList;
  *
  * @author joelorrala
  */
-public class Pedido implements Serializable{
+public class Pedido implements Serializable {
 
     private String idPedido;
     private Cliente cliente;
@@ -26,7 +26,7 @@ public class Pedido implements Serializable{
     private double subtotal;
     private double ivaPedido;
     private double total;
-    
+
     private static final long serialVersionUID = 6394426406957881396L;
 
     public Pedido(Cliente cliente, ArrayList<PlatoEscogido> listaPlatos, String direccionEntrega, double subtotal, double ivaPedido, double total) {
@@ -104,13 +104,13 @@ public class Pedido implements Serializable{
         }
         return codigo;
     }
- 
+
     @Override
     public String toString() {
         return "Pedido{idPedido: " + idPedido + ", cliente: " + cliente.getNombre() + ", lista platos: " + listaPlatos + ", dirección entrega: " + direccionEntrega
                 + ", subtotal: " + subtotal + ", iva pedido: " + ivaPedido + " , total: " + total;
     }
-    
+
     public void guardarPedido() {
         try ( BufferedWriter bw = new BufferedWriter(new FileWriter(App.pathFiles + "pedidos.txt", true))) {
             bw.write(idPedido + "," + cliente.getNombre() + "," + total + "\n");

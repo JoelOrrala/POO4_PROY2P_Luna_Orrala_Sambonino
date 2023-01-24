@@ -9,5 +9,5 @@ package com.pooespol.poo4_proy2p_modelo;
  * @author joelorrala
  */
 public enum TipoPago {
-    E,C
+    E, C
 }

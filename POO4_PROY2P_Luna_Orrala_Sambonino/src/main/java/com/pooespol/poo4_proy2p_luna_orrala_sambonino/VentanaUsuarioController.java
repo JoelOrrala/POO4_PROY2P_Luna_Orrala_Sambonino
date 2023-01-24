@@ -24,14 +24,15 @@ public class VentanaUsuarioController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-    
+
     @FXML
-    public void encontrarLocalCercano(ActionEvent e){
-        
+    public void encontrarLocalCercano(ActionEvent e) {
+
     }
+
     @FXML
-    public void realizarPedido(ActionEvent e){
-        
+    public void realizarPedido(ActionEvent e) {
+
     }
-    
+
 }
