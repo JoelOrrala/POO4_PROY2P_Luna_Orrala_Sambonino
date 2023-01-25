@@ -12,13 +12,16 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -71,20 +74,45 @@ public class VentanaUsuarioController implements Initializable {
             } catch (IOException ex) {
                 System.out.println("No se encontro la imagen");
             }
-            imgVIcono.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent t) {
-                    Alert info = new Alert(Alert.AlertType.INFORMATION);
-                    info.setTitle("Mostrando informacion de la sucursal");
-                    info.setHeaderText(l.getNombre() + "\n"
-                            + l.getDireccion() + "\n"
-                            + l.getHorario());
-                    Optional<ButtonType> opcion = info.showAndWait();
-                    if (opcion.get() == ButtonType.OK) {
-                    }
-
-                }
-            });
+//            imgVIcono.setOnMouseClicked(new EventHandler<MouseEvent>() {
+//                @Override
+//                public void handle(MouseEvent t) {
+//
+//                    Alert info = new Alert(Alert.AlertType.INFORMATION);
+//                    info.setTitle("Mostrando informacion de la sucursal");
+//                    info.setHeaderText(l.getNombre() + "\n"
+//                            + l.getDireccion() + "\n"
+//                            + l.getHorario() + "\n"
+//                    );
+//                    Optional<ButtonType> opcion = info.showAndWait();
+//                    if (opcion.get() == ButtonType.OK) {
+//                    }
+//                    int aleatorio = (int) (Math.random() * 10);
+//                    Thread hiloInfo = new Thread(new Runnable() {
+//                        int aleat = aleatorio;
+//
+//                        @Override
+//                        public void run() {
+//
+//                            for (int i = 0; i < aleat; i++) {
+//                                Platform.runLater(new Runnable() {
+//                                    @Override
+//                                    public void run() {
+//
+//                                    }
+//
+//                                });
+//
+//                            }
+//                        }
+//                    });
+//                    hiloInfo.setDaemon(true);
+//                    try {
+//                        hiloInfo.sleep(aleatorio * 1000);
+//                    } catch (InterruptedException ex) {
+//                    }
+//                }
+//            });
 
             imgVIcono.setLayoutX(l.getCoordenadaX());
             imgVIcono.setLayoutY(l.getCoordenadaY());
@@ -106,6 +134,20 @@ public class VentanaUsuarioController implements Initializable {
      */
     @FXML
     public void realizarPedido(ActionEvent e) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("VentanaPedidos.fxml"));
+            Pane root = loader.load();
+//            VentanaIngresoController controladorIngreso = loader.getController();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+//            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
+            stage.setTitle("The Good Burger Restaurant");
+            stage.show();
+
+        } catch (IOException ex) {
+            System.out.println("Error");
+        }
 
     }
 

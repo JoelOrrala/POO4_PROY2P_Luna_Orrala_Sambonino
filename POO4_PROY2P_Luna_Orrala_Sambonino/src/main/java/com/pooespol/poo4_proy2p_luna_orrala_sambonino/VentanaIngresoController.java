@@ -55,8 +55,7 @@ public class VentanaIngresoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        try ( FileInputStream input = new FileInputStream(App.pathImg + "delivery_inicio.png");
-                FileInputStream input2 = new FileInputStream(App.pathImg + "hamburguesa.png");) {
+        try ( FileInputStream input = new FileInputStream(App.pathImg + "delivery_inicio.png");  FileInputStream input2 = new FileInputStream(App.pathImg + "hamburguesa.png");) {
             Image image = new Image(input);
             Image image2 = new Image(input2);
             imgIzq.setImage(image);
@@ -65,13 +64,13 @@ public class VentanaIngresoController implements Initializable {
         } catch (IOException ex) {
             System.out.println("No se encuentran las imágenes");
         }
-        
+
         btnIngresar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent t) {
                 if (Cliente.verificarCliente(listClientes, campoUsuario.getText(), campoContrasenia.getText()) == true) {
                     ingresar();
-                }else{
+                } else {
                     lblmensaje.setText("Ingreso no válido");
                 }
 
@@ -91,7 +90,7 @@ public class VentanaIngresoController implements Initializable {
 //            stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(scene);
             stage.setTitle("The Good Burger Restaurant");
-            stage.show();
+            stage.showAndWait();
 
         } catch (IOException ex) {
             System.out.println("Error");
