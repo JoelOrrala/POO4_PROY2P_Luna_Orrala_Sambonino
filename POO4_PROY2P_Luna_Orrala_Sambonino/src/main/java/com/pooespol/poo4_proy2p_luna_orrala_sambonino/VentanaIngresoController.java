@@ -10,11 +10,15 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -28,26 +32,52 @@ public class VentanaIngresoController implements Initializable {
 
     private static ArrayList<Cliente> listClientes = Cliente.leerClientes();
 
+    @FXML
+    private PasswordField campoContraseña;
+    @FXML
+    private TextField campoUsuario;
+    @FXML
+    private Button btnIngresar;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+//        boolean encontrado = Cliente.verificarCliente(listClientes, campoUsuario.getText(), campoContraseña.getText());
+//        if (encontrado == true) {
+//            btnIngresar.setOnAction(new EventHandler<ActionEvent>() {
+//                @Override
+//                public void handle(ActionEvent t) {
+//                    ingresar();
+//
+//                }
+//
+//            });
+//
+//        }
+        btnIngresar.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent t) {
+                ingresar();
+            }
+
+        });
+
     }
 
-    @FXML
-    public void ingresar(ActionEvent e) {
+    public void ingresar() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("VentanaUsuario.fxml"));
             Pane root = loader.load();
-            VentanaUsuarioController controlador = loader.getController();
+//            VentanaIngresoController controladorIngreso = loader.getController();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
 //            stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(scene);
             stage.setTitle("The Good Burger Restaurant");
-            stage.showAndWait();
+            stage.show();
 
         } catch (IOException ex) {
             System.out.println("Error");

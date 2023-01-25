@@ -22,6 +22,7 @@ public class Local {
     private String horario;
     private double coordenadaX;
     private double coordenadaY;
+    private static ArrayList<Local> listLocales;
 
     public Local(String nombre, String direccion, String horario, double coordenadaX, double coordenadaY) {
         this.nombre = nombre;
@@ -72,18 +73,19 @@ public class Local {
     }
 
     public static ArrayList<Local> leerLocales() {
-        ArrayList<Local> listLocales = new ArrayList<>();
+        listLocales = new ArrayList<>();
         try ( BufferedReader br = new BufferedReader(new FileReader(App.pathFiles + "locales.txt", StandardCharsets.UTF_8))) {
-            String linea = "";
-            while ((linea = br.readLine()) != null) {
-                String[] lcl = linea.strip().split(",");
+            String linea = br.readLine();
+            while (linea != null) {
+                String[] lcl = linea.strip().trim().split(",");
                 String name = lcl[0];
                 String address = lcl[1];
                 String shedule = lcl[2];
-                double x = Double.parseDouble(lcl[3]);
-                double y = Double.parseDouble(lcl[4]);
+                double x = Double.parseDouble(lcl[3].trim());
+                double y = Double.parseDouble(lcl[4].trim());
                 Local l = new Local(name, address, shedule, x, y);
                 listLocales.add(l);
+                linea = br.readLine();
             }
         } catch (IOException ex) {
             System.out.println("No se pudo leer el archivo");
