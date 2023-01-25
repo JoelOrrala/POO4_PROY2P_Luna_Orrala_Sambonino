@@ -81,8 +81,8 @@ public class Local {
                 String name = lcl[0];
                 String address = lcl[1];
                 String shedule = lcl[2];
-                double cX = Double.parseDouble(lcl[3].trim());
-                double cY = Double.parseDouble(lcl[4].trim());
+                double cX = Double.valueOf(lcl[3].trim());
+                double cY = Double.valueOf(lcl[4].trim());
                 Local l = new Local(name, address, shedule, cX, cY);
                 listLocales.add(l);
                 linea = br.readLine();
