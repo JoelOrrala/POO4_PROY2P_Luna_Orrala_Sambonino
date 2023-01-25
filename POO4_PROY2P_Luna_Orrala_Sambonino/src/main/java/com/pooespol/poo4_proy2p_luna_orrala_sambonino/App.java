@@ -18,13 +18,14 @@ public class App extends Application {
     public static String pathFiles = "src/main/resources/files/";
     public static String pathImg = "src/main/resources/images/";
     public static String pathPed = "src/main/resources/pedidos/";
+    public static String pathStyles = "src/main/resources/styles/";
 
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader fxmLoader = new FXMLLoader(App.class.getResource("VentanaIngreso.fxml"));
-
         Parent root = fxmLoader.load();
-        scene = new Scene(root, 640, 600);
+        scene = new Scene(root, 690,470);
+        scene.getStylesheets().add(App.class.getResource("ingreso.css").toExternalForm());
         stage.setScene(scene);
         stage.setTitle("The Good Burger Restaurant");
         stage.show();
@@ -34,5 +35,5 @@ public class App extends Application {
     public static void main(String[] args) {
         launch();
     }
-
+    
 }

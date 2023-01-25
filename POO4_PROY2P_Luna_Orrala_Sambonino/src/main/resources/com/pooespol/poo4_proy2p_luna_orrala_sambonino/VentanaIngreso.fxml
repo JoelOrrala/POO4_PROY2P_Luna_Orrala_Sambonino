@@ -7,31 +7,30 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pooespol.poo4_proy2p_luna_orrala_sambonino.VentanaIngresoController">
+<VBox fx:id="root" alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pooespol.poo4_proy2p_luna_orrala_sambonino.VentanaIngresoController">
    <children>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="600.0">
+      <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="600.0">
          <children>
-            <Label text="The Good Burguer Restaurant">
+            <Label fx:id="lbltitulo" text="The Good Burguer Restaurant">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
          </children>
       </HBox>
-      <HBox alignment="CENTER" layoutY="100.0" prefHeight="302.0" prefWidth="600.0">
+      <HBox alignment="CENTER" prefHeight="302.0" prefWidth="600.0">
          <children>
-            <VBox alignment="CENTER" prefHeight="300.0" prefWidth="162.0">
+            <VBox alignment="BOTTOM_CENTER" prefHeight="300.0" prefWidth="162.0">
                <children>
-                  <ImageView fx:id="imgIzq" fitHeight="205.0" fitWidth="164.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="imgIzq" fitHeight="160.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </VBox>
-            <VBox alignment="CENTER" prefHeight="302.0" prefWidth="275.0">
+            <VBox alignment="CENTER" prefHeight="302.0" prefWidth="275.0" spacing="5.0">
                <children>
-                  <HBox prefHeight="70.0" prefWidth="272.0">
+                  <HBox prefHeight="64.0" prefWidth="275.0" spacing="19.0">
                      <children>
                         <Label text="Usuario:">
                            <HBox.margin>
@@ -48,7 +47,7 @@
                         </TextField>
                      </children>
                   </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox prefHeight="74.0" prefWidth="272.0">
                      <children>
                         <Label text="Contraseña:">
                            <HBox.margin>
@@ -65,7 +64,7 @@
                         </PasswordField>
                      </children>
                   </HBox>
-                  <Button fx:id="btnIngresar" mnemonicParsing="false" text="Ingresar">
+                  <Button fx:id="btnIngresar" mnemonicParsing="false" prefHeight="31.0" prefWidth="72.0" text="Ingresar">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
@@ -73,14 +72,18 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
+                  <Label fx:id="lblmensaje">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></Label>
                </children>
             </VBox>
-            <VBox alignment="CENTER" prefHeight="302.0" prefWidth="162.0">
+            <VBox alignment="BOTTOM_CENTER" prefHeight="302.0" prefWidth="162.0">
                <children>
-                  <ImageView fx:id="imgDer" fitHeight="204.0" fitWidth="164.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="imgDer" fitHeight="160.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </VBox>
          </children>
       </HBox>
    </children>
-</Pane>
+</VBox>

@@ -5,6 +5,7 @@
 package com.pooespol.poo4_proy2p_luna_orrala_sambonino;
 
 import com.pooespol.poo4_proy2p_modelo.Cliente;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -17,8 +18,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -38,6 +42,12 @@ public class VentanaIngresoController implements Initializable {
     private TextField campoUsuario;
     @FXML
     private Button btnIngresar;
+    @FXML
+    private ImageView imgIzq;
+    @FXML
+    private ImageView imgDer;
+    @FXML
+    private Label lblmensaje;
 
     /**
      * Initializes the controller class.
@@ -45,11 +55,24 @@ public class VentanaIngresoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        try ( FileInputStream input = new FileInputStream(App.pathImg + "delivery_inicio.png");
+                FileInputStream input2 = new FileInputStream(App.pathImg + "hamburguesa.png");) {
+            Image image = new Image(input);
+            Image image2 = new Image(input2);
+            imgIzq.setImage(image);
+            imgDer.setImage(image2);
+
+        } catch (IOException ex) {
+            System.out.println("No se encuentran las imágenes");
+        }
+        
         btnIngresar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent t) {
                 if (Cliente.verificarCliente(listClientes, campoUsuario.getText(), campoContrasenia.getText()) == true) {
                     ingresar();
+                }else{
+                    lblmensaje.setText("Ingreso no válido");
                 }
 
             }
