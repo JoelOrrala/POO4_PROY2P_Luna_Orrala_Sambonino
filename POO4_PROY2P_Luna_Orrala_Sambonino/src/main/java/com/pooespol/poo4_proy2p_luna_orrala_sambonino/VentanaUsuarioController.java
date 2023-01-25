@@ -52,7 +52,7 @@ public class VentanaUsuarioController implements Initializable {
         for (Local l : listLocales) {
             ImageView imgVIcono = null;
             try ( FileInputStream entrada = new FileInputStream(App.pathImg + "iconolocal.png")) {
-                Image image = new Image(entrada, 200, 100, false, false);
+                Image image = new Image(entrada, 100, 50, false, false);
                 imgVIcono = new ImageView(image);
 
             } catch (IOException ex) {
