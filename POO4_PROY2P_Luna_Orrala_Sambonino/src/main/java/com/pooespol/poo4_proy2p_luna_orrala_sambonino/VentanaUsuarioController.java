@@ -10,20 +10,26 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
- * FXML Controller class
+ * FXML Controller class VentanaUsuarioController siendo la ventana para escoger
+ * opciones entre encontrar el sucursal mas cercano o hacer un nuevo pedido
  *
- * @author Mr Arana
+ * @author L.Luna
  */
 public class VentanaUsuarioController implements Initializable {
 
@@ -35,6 +41,13 @@ public class VentanaUsuarioController implements Initializable {
         // TODO
     }
 
+    /**
+     * Metodo del evento del boton ENCUENTRA EL LOCAL MAS CERCANO que muestra
+     * una nueva ventana con los puntos de todas las sucursales existentes donde
+     * cada punto muestra informacion relevante del local
+     *
+     * @param e ActionEvent
+     */
     @FXML
     public void encontrarLocalCercano(ActionEvent e) {
         ImageView imgVMapa = null;
@@ -58,6 +71,20 @@ public class VentanaUsuarioController implements Initializable {
             } catch (IOException ex) {
                 System.out.println("No se encontro la imagen");
             }
+            imgVIcono.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent t) {
+                    Alert info = new Alert(Alert.AlertType.INFORMATION);
+                    info.setTitle("Mostrando informacion de la sucursal");
+                    info.setHeaderText(l.getNombre() + "\n"
+                            + l.getDireccion() + "\n"
+                            + l.getHorario());
+                    Optional<ButtonType> opcion = info.showAndWait();
+                    if (opcion.get() == ButtonType.OK) {
+                    }
+
+                }
+            });
 
             imgVIcono.setLayoutX(l.getCoordenadaX());
             imgVIcono.setLayoutY(l.getCoordenadaY());
@@ -71,6 +98,12 @@ public class VentanaUsuarioController implements Initializable {
 
     }
 
+    /**
+     * Metodo del evento del boton HAZ TU PEDIDO donde se podra realizar el
+     * pedido del cliente
+     *
+     * @param e ActionEvent
+     */
     @FXML
     public void realizarPedido(ActionEvent e) {
 
