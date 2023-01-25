@@ -33,7 +33,7 @@ public class VentanaIngresoController implements Initializable {
     private static ArrayList<Cliente> listClientes = Cliente.leerClientes();
 
     @FXML
-    private PasswordField campoContraseña;
+    private PasswordField campoContrasenia;
     @FXML
     private TextField campoUsuario;
     @FXML
@@ -45,22 +45,13 @@ public class VentanaIngresoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-//        boolean encontrado = Cliente.verificarCliente(listClientes, campoUsuario.getText(), campoContraseña.getText());
-//        if (encontrado == true) {
-//            btnIngresar.setOnAction(new EventHandler<ActionEvent>() {
-//                @Override
-//                public void handle(ActionEvent t) {
-//                    ingresar();
-//
-//                }
-//
-//            });
-//
-//        }
         btnIngresar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent t) {
-                ingresar();
+                if (Cliente.verificarCliente(listClientes, campoUsuario.getText(), campoContrasenia.getText()) == true) {
+                    ingresar();
+                }
+
             }
 
         });

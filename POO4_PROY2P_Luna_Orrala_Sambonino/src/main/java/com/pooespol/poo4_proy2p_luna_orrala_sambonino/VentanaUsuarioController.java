@@ -58,7 +58,7 @@ public class VentanaUsuarioController implements Initializable {
             } catch (IOException ex) {
                 System.out.println("No se encontro la imagen");
             }
-            
+
             imgVIcono.setLayoutX(l.getCoordenadaX());
             imgVIcono.setLayoutY(l.getCoordenadaY());
             rootLocalCercano.getChildren().add(imgVIcono);

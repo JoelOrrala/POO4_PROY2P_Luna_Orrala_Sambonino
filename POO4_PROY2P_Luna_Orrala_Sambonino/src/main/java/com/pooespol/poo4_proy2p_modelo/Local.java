@@ -77,13 +77,13 @@ public class Local {
         try ( BufferedReader br = new BufferedReader(new FileReader(App.pathFiles + "locales.txt", StandardCharsets.UTF_8))) {
             String linea = br.readLine();
             while (linea != null) {
-                String[] lcl = linea.strip().trim().split(",");
+                String[] lcl = linea.trim().strip().split(",");
                 String name = lcl[0];
                 String address = lcl[1];
                 String shedule = lcl[2];
-                double x = Double.parseDouble(lcl[3].trim());
-                double y = Double.parseDouble(lcl[4].trim());
-                Local l = new Local(name, address, shedule, x, y);
+                double cX = Double.parseDouble(lcl[3].trim());
+                double cY = Double.parseDouble(lcl[4].trim());
+                Local l = new Local(name, address, shedule, cX, cY);
                 listLocales.add(l);
                 linea = br.readLine();
             }
