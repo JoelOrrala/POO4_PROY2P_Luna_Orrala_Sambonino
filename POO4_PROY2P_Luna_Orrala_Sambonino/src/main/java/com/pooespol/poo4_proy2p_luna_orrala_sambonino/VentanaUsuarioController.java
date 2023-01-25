@@ -19,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -32,13 +33,16 @@ import javafx.stage.Stage;
  * @author L.Luna
  */
 public class VentanaUsuarioController implements Initializable {
-
+    
+    @FXML 
+    private Label lblBienvenida;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        lblBienvenida.setText("Bienvend@");
     }
 
     /**
@@ -106,7 +110,7 @@ public class VentanaUsuarioController implements Initializable {
      */
     @FXML
     public void realizarPedido(ActionEvent e) {
-
+        
     }
 
 }

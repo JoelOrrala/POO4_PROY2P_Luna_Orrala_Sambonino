@@ -1,0 +1,20 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 25 ene. 2023, 12:28:35
+    Author     : joelorrala
+*/
+
+.root{
+    -fx-background-color: #e67e22;
+}
+
+.label{
+    -fx-font-size: 30px;
+    -fx-font-family: "Impact";
+    -fx-text-fill: #e67e22;
+    -fx-font-weight: bold;
+}
+

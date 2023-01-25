@@ -87,6 +87,7 @@ public class VentanaIngresoController implements Initializable {
             Pane root = loader.load();
 //            VentanaIngresoController controladorIngreso = loader.getController();
             Scene scene = new Scene(root);
+            scene.getStylesheets().add(App.class.getResource("sistema.css").toExternalForm());
             Stage stage = new Stage();
 //            stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(scene);
