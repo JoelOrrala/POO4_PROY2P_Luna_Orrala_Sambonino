@@ -94,7 +94,7 @@ public class VentanaIngresoController implements Initializable {
             stage.showAndWait();
 
         } catch (IOException ex) {
-            System.out.println("Error");
+            System.out.println("Error al ingresar");
         }
 
     }

@@ -28,7 +28,7 @@ public class App extends Application {
         scene.getStylesheets().add(App.class.getResource("ingreso.css").toExternalForm());
         stage.setScene(scene);
         stage.setTitle("The Good Burger Restaurant");
-        stage.show();
+    stage.show();
 
     }
 

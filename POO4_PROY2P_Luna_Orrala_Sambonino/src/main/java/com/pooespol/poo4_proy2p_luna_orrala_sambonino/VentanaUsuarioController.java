@@ -4,6 +4,7 @@
  */
 package com.pooespol.poo4_proy2p_luna_orrala_sambonino;
 
+import com.pooespol.poo4_proy2p_modelo.Cliente;
 import com.pooespol.poo4_proy2p_modelo.Local;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -35,7 +36,7 @@ import javafx.stage.Stage;
  * @author L.Luna
  */
 public class VentanaUsuarioController implements Initializable {
-    
+
     @FXML 
     private Label lblBienvenida;
     /**
@@ -44,7 +45,7 @@ public class VentanaUsuarioController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        lblBienvenida.setText("Bienvend@");
+        lblBienvenida.setText("Bienvend@ ");
     }
 
     /**
