@@ -12,40 +12,40 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="10.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pooespol.poo4_proy2p_luna_orrala_sambonino.VentanaPedidosController">
+<VBox fx:id="rootVPedidos" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="20.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pooespol.poo4_proy2p_luna_orrala_sambonino.VentanaPedidosController">
    <children>
-      <Label text="Realice su pedido">
+      <Label fx:id="lblTitulo" text="Realice su pedido">
          <VBox.margin>
             <Insets bottom="10.0" left="30.0" top="30.0" />
          </VBox.margin></Label>
       <HBox prefHeight="63.0" prefWidth="600.0">
          <children>
-            <Label text="Tipo:">
+            <Label fx:id="lblTipo" text="Tipo:">
                <HBox.margin>
                   <Insets left="35.0" right="10.0" />
                </HBox.margin></Label>
-            <ComboBox prefWidth="150.0">
+            <ComboBox fx:id="cbxTipo" prefWidth="150.0">
                <HBox.margin>
                   <Insets right="90.0" />
                </HBox.margin></ComboBox>
-            <Label text="Ordenar por:">
+            <Label fx:id="lblOrdenar" text="Ordenar por:">
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin></Label>
-            <ComboBox prefWidth="150.0" />
+            <ComboBox fx:id="cbxOrdenar" prefWidth="150.0" />
          </children></HBox>
-      <HBox prefHeight="50.0" prefWidth="600.0" spacing="320.0">
+      <HBox prefHeight="21.0" prefWidth="600.0" spacing="320.0">
          <children>
-            <Label text="Opciones">
+            <Label fx:id="lblOpciones" text="Opciones">
                <HBox.margin>
                   <Insets left="35.0" />
                </HBox.margin></Label>
-            <Label text="Pedido" />
+            <Label fx:id="lblPedido" text="Pedido" />
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
          <children>
-            <GridPane prefHeight="96.0" prefWidth="299.0">
+            <GridPane fx:id="gridPaneOp" alignment="CENTER" prefHeight="96.0" prefWidth="299.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -57,12 +57,15 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
+               <HBox.margin>
+                  <Insets left="15.0" />
+               </HBox.margin>
             </GridPane>
-            <TableView prefHeight="96.0" prefWidth="227.0">
+            <TableView fx:id="tableVPedido" prefHeight="96.0" prefWidth="227.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="Decripción" />
-                <TableColumn prefWidth="75.0" text="Cantidad" />
-                  <TableColumn prefWidth="75.0" text="Valor" />
+                <TableColumn fx:id="columnDescripcion" prefWidth="75.0" text="Decripción" />
+                <TableColumn fx:id="columnCantidad" prefWidth="75.0" text="Cantidad" />
+                  <TableColumn fx:id="columnValor" prefWidth="75.0" text="Valor" />
               </columns>
             </TableView>
          </children>
@@ -71,24 +74,24 @@
          <children>
             <VBox prefHeight="81.0" prefWidth="106.0">
                <children>
-                  <Label text="Subtotal:" />
-                  <Label text="IVA:" />
-                  <Label text="Total:" />
+                  <Label fx:id="lbldat1" text="Subtotal:" />
+                  <Label fx:id="lbldat2" text="IVA:" />
+                  <Label fx:id="lbldat3" text="Total:" />
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Label text="Label" />
-                  <Label text="Label" />
-                  <Label text="Label" />
+                  <Label fx:id="lblSubtotal" text="Label" />
+                  <Label fx:id="lbliva" text="Label" />
+                  <Label fx:id="lblTotal" text="Label" />
                </children>
             </VBox>
          </children>
       </HBox>
       <HBox alignment="TOP_CENTER" prefHeight="72.0" prefWidth="600.0" spacing="40.0">
          <children>
-            <Button mnemonicParsing="false" text="Continuar" />
-            <Button mnemonicParsing="false" text="Limpiar" />
+            <Button fx:id="btnContinuar" mnemonicParsing="false" text="Continuar" />
+            <Button fx:id="btnLimpiar" mnemonicParsing="false" onAction="#limpiar" text="Limpiar" />
          </children>
       </HBox>
    </children>
