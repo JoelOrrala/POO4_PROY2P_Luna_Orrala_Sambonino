@@ -91,6 +91,7 @@ public class VentanaIngresoController implements Initializable {
 //            stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(scene);
             stage.setTitle("The Good Burger Restaurant");
+            stage.setResizable(false);
             stage.showAndWait();
 
         } catch (IOException ex) {

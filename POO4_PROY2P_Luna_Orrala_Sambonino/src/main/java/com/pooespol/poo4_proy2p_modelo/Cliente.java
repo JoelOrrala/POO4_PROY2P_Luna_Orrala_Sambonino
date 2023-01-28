@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
-/**
+/** La clase Cliente hace referencia al usuario que se encuentra utilizando la app
  *
  * @author joelorrala
  */
@@ -20,37 +20,71 @@ public class Cliente {
     private String nombre;
     private String usuario;
     private String contrasenia;
-
+    
+    /**
+     * Constructor de la clase Cliente que recibe los datos nombre, usuario y contraseña
+     * @param nombre nombre del cliente
+     * @param usuario usuario del cliente
+     * @param contrasenia contraseña del cliente
+     */
     public Cliente(String nombre, String usuario, String contrasenia) {
         this.nombre = nombre;
         this.usuario = usuario;
         this.contrasenia = contrasenia;
     }
-
+    
+    /**
+     * 
+     * @return nombre del cliente
+     */
     public String getNombre() {
         return nombre;
     }
-
+    
+    /**
+     * Permite cambiar el nombre del cliente
+     * @param nombre 
+     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
+    
+    /**
+     * 
+     * @return usuario del cliente
+     */
     public String getUsuario() {
         return usuario;
     }
-
+    
+    /**
+     * Permite cambiar el usuario del cliente
+     * @param usuario 
+     */
     public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
-
+    
+    /**
+     * 
+     * @return contraseña del cliente
+     */
     public String getContrasenia() {
         return contrasenia;
     }
-
+    
+    /**
+     * Permite cambiar la contraseña del cliente
+     * @param contrasenia
+     */
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
     }
-
+    
+    /**
+     * Leer el archivo de usuarios.txt, crea los respectivos objetos y los almacena en una lista para retornarlos
+     * @return lista de objetos tipo Cliente
+     */
     public static ArrayList<Cliente> leerClientes() {
         ArrayList<Cliente> listCli = new ArrayList<>();
         try ( BufferedReader br = new BufferedReader(new FileReader(App.pathFiles + "usuarios.txt", StandardCharsets.UTF_8))) {
@@ -64,7 +98,14 @@ public class Cliente {
         }
         return listCli;
     }
-
+    
+    /**
+     * Verifica si el cliente se encuentra entre los usuarios registrados en una lista recibida como parámetro
+     * @param listaClientes
+     * @param usuario
+     * @param contrasenia
+     * @return booleano
+     */
     public static boolean verificarCliente(ArrayList<Cliente> listaClientes, String usuario, String contrasenia) {
         boolean encontrado = false;
         for (Cliente c : listaClientes) {
