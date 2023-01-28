@@ -67,9 +67,8 @@ public class VentanaPagoController implements Initializable {
 
     @FXML
     private ToggleGroup opciones;
-    
+
     private TipoPago tipo;
-    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -129,7 +128,7 @@ public class VentanaPagoController implements Initializable {
                 lblmensajepago.setText("Tendra que pagar un total del ---- dólares. "
                         + "Aségurese de tener el dinero completo por si el repartidor no tiene cambio.");
                 tipo = TipoPago.E;
-                
+
             } else {
                 vbtarjeta.setVisible(false);
             }
@@ -185,7 +184,7 @@ public class VentanaPagoController implements Initializable {
 //                    Date fecha = new Date();
 //                    Pago p = new Pago(cliente, pedido , total_pagar ,fecha,tipo);
 //                    p.guardarPago();
-                    
+
                 }
 
             }
@@ -200,6 +199,7 @@ public class VentanaPagoController implements Initializable {
             Pane root = loader.load();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
+            scene.getStylesheets().add(App.class.getResource("ingreso.css").toExternalForm());
             stage.setScene(scene);
             stage.setTitle("The Good Burger Restaurant");
             stage.showAndWait();
