@@ -125,10 +125,4 @@ public class Cliente {
         }
         return cliente;
     }
-    
-    @Override
-    public String toString() {
-        return nombre;
-    }
-    
 }
