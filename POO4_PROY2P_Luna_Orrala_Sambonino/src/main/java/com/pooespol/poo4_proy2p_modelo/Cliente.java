@@ -115,4 +115,20 @@ public class Cliente {
         }
         return encontrado;
     }
+    
+    public static Cliente retornarCliente(ArrayList<Cliente> listaClientes, String usuario, String contrasenia) {
+        Cliente cliente = null;
+        for (Cliente c : listaClientes) {
+            if (c.getUsuario().equals(usuario) && c.getContrasenia().equals(contrasenia)) {
+                cliente = c;
+            }
+        }
+        return cliente;
+    }
+    
+    @Override
+    public String toString() {
+        return nombre;
+    }
+    
 }

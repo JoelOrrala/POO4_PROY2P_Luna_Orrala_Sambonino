@@ -36,7 +36,8 @@ import javafx.stage.Stage;
  * @author L.Luna
  */
 public class VentanaUsuarioController implements Initializable {
-
+    
+    private Cliente clienteAct;
     private ArrayList<Local> listLocales;
 
     @FXML
@@ -48,8 +49,12 @@ public class VentanaUsuarioController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        lblBienvenida.setText("Bienvend@ ");
         listLocales = Local.leerLocales();
+    }
+    
+    public void recuperarCliente(Cliente c) {
+        this.clienteAct = c;
+        lblBienvenida.setText("Bienvend@ "+clienteAct.getNombre());
     }
 
     /**
@@ -186,6 +191,7 @@ public class VentanaUsuarioController implements Initializable {
 
         } catch (IOException ex) {
             System.out.println("Error");
+
         }
     }
 
