@@ -50,8 +50,8 @@ public class VentanaDespedidaController implements Initializable {
         // TODO
         
         
-        lblMensajeDespedida.setText("Su pedido N° ha sido pagado con exito y ahora empezaremos a prepararlo.\n" 
-                    +"En aproximadamente 30 minutos llegara a su destino.\n"
+        lblMensajeDespedida.setText("Su pedido N° ha sido pagado con éxito y ahora empezaremos a prepararlo.\n" 
+                    +"En aproximadamente 30 minutos llegará a su destino.\n"
                     +"Gracias por preferirnos.");
         try ( FileInputStream input = new FileInputStream(new File(App.pathImg+"delivery_final.png"))) {
             Image img2 = new Image(input);
