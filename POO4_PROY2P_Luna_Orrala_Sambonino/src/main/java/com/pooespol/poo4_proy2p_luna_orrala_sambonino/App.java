@@ -22,7 +22,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader fxmLoader = new FXMLLoader(App.class.getResource("VentanaIngreso.fxml"));
+        FXMLLoader fxmLoader = new FXMLLoader(App.class.getResource("VentanaDespedida.fxml"));
         Parent root = fxmLoader.load();
         scene = new Scene(root, 690,470);
         scene.getStylesheets().add(App.class.getResource("ingreso.css").toExternalForm());
