@@ -33,7 +33,8 @@ import javafx.stage.Stage;
  * @author Mr Arana
  */
 public class VentanaIngresoController implements Initializable {
-
+    
+    private Cliente clienteIng;
     private static ArrayList<Cliente> listClientes = Cliente.leerClientes();
 
     @FXML
@@ -69,6 +70,7 @@ public class VentanaIngresoController implements Initializable {
             @Override
             public void handle(ActionEvent t) {
                 if (Cliente.verificarCliente(listClientes, campoUsuario.getText(), campoContrasenia.getText()) == true) {
+                    clienteIng = Cliente.retornarCliente(listClientes, campoUsuario.getText(), campoContrasenia.getText());
                     ingresar();
                 } else {
                     lblmensaje.setText("Ingreso no válido");
@@ -84,17 +86,20 @@ public class VentanaIngresoController implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("VentanaUsuario.fxml"));
             Pane root = loader.load();
-//            VentanaIngresoController controladorIngreso = loader.getController();
+            VentanaUsuarioController controladorUsuario = loader.getController();
+            controladorUsuario.recuperarCliente(clienteIng);
             Scene scene = new Scene(root);
             scene.getStylesheets().add(App.class.getResource("sistema.css").toExternalForm());
             Stage stage = new Stage();
 //            stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(scene);
             stage.setTitle("The Good Burger Restaurant");
+            stage.setResizable(false);
             stage.showAndWait();
 
         } catch (IOException ex) {
-            System.out.println("Error al ingresar");
+             System.out.println(ex.getMessage());
+             ex.printStackTrace();
         }
 
     }

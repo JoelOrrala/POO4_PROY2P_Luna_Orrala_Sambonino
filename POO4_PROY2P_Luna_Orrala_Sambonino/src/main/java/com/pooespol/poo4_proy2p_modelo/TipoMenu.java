@@ -9,5 +9,20 @@ package com.pooespol.poo4_proy2p_modelo;
  * @author joelorrala
  */
 public enum TipoMenu {
-    F, P, B, Q
+    /**
+     * Plato fuerte
+     */
+    F, 
+    /**
+     * Postre
+     */
+    P, 
+    /**
+     * Bebida
+     */
+    B, 
+    /**
+     * Piqueo
+     */
+    Q
 }

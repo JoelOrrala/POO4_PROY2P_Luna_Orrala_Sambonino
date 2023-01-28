@@ -25,10 +25,11 @@ public class App extends Application {
         FXMLLoader fxmLoader = new FXMLLoader(App.class.getResource("VentanaIngreso.fxml"));
         Parent root = fxmLoader.load();
         scene = new Scene(root, 690,470);
-        scene.getStylesheets().add(App.class.getResource("ingreso.css").toExternalForm());
+        scene.getStylesheets().add(App.class.getResource("despedida.css").toExternalForm());
         stage.setScene(scene);
         stage.setTitle("The Good Burger Restaurant");
-    stage.show();
+        stage.show();
+        stage.setResizable(false);
 
     }
 

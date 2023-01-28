@@ -36,16 +36,25 @@ import javafx.stage.Stage;
  * @author L.Luna
  */
 public class VentanaUsuarioController implements Initializable {
+    
+    private Cliente clienteAct;
+    private ArrayList<Local> listLocales;
 
-    @FXML 
+    @FXML
     private Label lblBienvenida;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        lblBienvenida.setText("Bienvend@ ");
+        listLocales = Local.leerLocales();
+    }
+    
+    public void recuperarCliente(Cliente c) {
+        this.clienteAct = c;
+        lblBienvenida.setText("Bienvend@ "+clienteAct.getNombre());
     }
 
     /**
@@ -68,75 +77,104 @@ public class VentanaUsuarioController implements Initializable {
         Pane rootLocalCercano = new Pane();
         rootLocalCercano.getChildren().add(imgVMapa);
 
-        ArrayList<Local> listLocales = Local.leerLocales();
-        for (Local l : listLocales) {
-            ImageView imgVIcono = null;
-            try ( FileInputStream entrada = new FileInputStream(App.pathImg + "iconolocal.png")) {
-                Image image = new Image(entrada, 100, 50, false, false);
-                imgVIcono = new ImageView(image);
-
-            } catch (IOException ex) {
-                System.out.println("No se encontro la imagen");
-            }
-//            imgVIcono.setOnMouseClicked(new EventHandler<MouseEvent>() {
-//                @Override
-//                public void handle(MouseEvent t) {
-//
-//                    Alert info = new Alert(Alert.AlertType.INFORMATION);
-//                    info.setTitle("Mostrando informacion de la sucursal");
-//                    info.setHeaderText(l.getNombre() + "\n"
-//                            + l.getDireccion() + "\n"
-//                            + l.getHorario() + "\n"
-//                    );
-//                    Optional<ButtonType> opcion = info.showAndWait();
-//                    if (opcion.get() == ButtonType.OK) {
-//                    }
-//                    int aleatorio = (int) (Math.random() * 10);
-//                    Thread hiloInfo = new Thread(new Runnable() {
-//                        int aleat = aleatorio;
-//
-//                        @Override
-//                        public void run() {
-//
-//                            for (int i = 0; i < aleat; i++) {
-//                                Platform.runLater(new Runnable() {
-//                                    @Override
-//                                    public void run() {
-//
-//                                    }
-//
-//                                });
-//
-//                            }
-//                        }
-//                    });
-//                    hiloInfo.setDaemon(true);
-//                    try {
-//                        hiloInfo.sleep(aleatorio * 1000);
-//                    } catch (InterruptedException ex) {
-//                    }
-//                }
-//            });
-
-            imgVIcono.setLayoutX(l.getCoordenadaX());
-            imgVIcono.setLayoutY(l.getCoordenadaY());
-            rootLocalCercano.getChildren().add(imgVIcono);
-
-        }
         Scene scene = new Scene(rootLocalCercano, 1100, 600);
         Stage s = new Stage();
         s.setScene(scene);
         s.show();
+        s.setResizable(false);
+
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (Local l : listLocales) {
+
+                    int aleatorio = (int) (Math.random() * 10);
+
+                    try {
+                        Thread.sleep(aleatorio * 1000);
+                    } catch (InterruptedException iex) {
+                        System.out.println(iex.getMessage());
+                    }
+
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            ImageView imgVIcono = null;
+                            try ( FileInputStream entrada = new FileInputStream(App.pathImg + "iconolocal.png")) {
+                                Image image = new Image(entrada, 100, 50, false, false);
+                                imgVIcono = new ImageView(image);
+                                imgVIcono.setLayoutX(l.getCoordenadaX());
+                                imgVIcono.setLayoutY(l.getCoordenadaY());
+
+                            } catch (IOException ex) {
+                                System.out.println("No se encontro la imagen del icono");
+                            }
+
+                            rootLocalCercano.getChildren().add(imgVIcono);
+
+                            imgVIcono.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                                @Override
+                                public void handle(MouseEvent t) {
+                                    Alert info = new Alert(Alert.AlertType.INFORMATION);
+                                    info.setTitle("Mostrando informacion de la sucursal");
+                                    info.setHeaderText(l.getNombre() + "\n"
+                                            + l.getDireccion() + "\n"
+                                            + l.getHorario() + "\n"
+                                    );
+                                    
+                                    Thread hiloInfo = new Thread(new Runnable() {
+
+                                        @Override
+                                        public void run() {
+
+                                            for (int i = 5; i >= 0; i--) {
+                                                int contador = i;
+                                                String advent = "La ventana se cerrara en " + i + " segundos";
+
+                                                try {
+                                                    Thread.sleep(1000);
+                                                    
+                                                } catch (InterruptedException ex) {
+
+                                                }
+
+                                                Platform.runLater(new Runnable() {
+
+                                                    @Override
+                                                    public void run() {
+                                                        info.setContentText(advent);
+                                                        if (contador == 0) {
+                                                            info.close();
+
+                                                        }
+                                                    }
+
+                                                });
+                                                
+                                            }
+                                        }
+                                    });
+                                    hiloInfo.setDaemon(true);
+                                    hiloInfo.start();
+                                    info.showAndWait();
+                                }
+                            });
+
+                        }
+                    });
+                }
+            }
+        });
+        t.start();
 
     }
-    
+
     /**
      * Metodo del evento del boton HAZ TU PEDIDO donde se podra realizar el
      * pedido del cliente
      *
      * @param e ActionEvent
      */
-    
     @FXML
     public void realizarPedido(ActionEvent e) {
 
@@ -153,6 +191,7 @@ public class VentanaUsuarioController implements Initializable {
 
         } catch (IOException ex) {
             System.out.println("Error");
+
         }
     }
 
