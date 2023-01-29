@@ -85,7 +85,7 @@
             <VBox prefHeight="200.0" prefWidth="100.0" spacing="8.0">
                <children>
                   <Label fx:id="lblSubtotal" text="Label" />
-                  <Label fx:id="lbliva" text="Label" />
+                  <Label fx:id="lblIVA" text="Label" />
                   <Label fx:id="lblTotal" text="Label" />
                </children>
             </VBox>
