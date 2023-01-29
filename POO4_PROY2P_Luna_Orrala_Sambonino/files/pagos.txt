@@ -1,0 +1,2 @@
+Idpago,idpedido,nombreCLiente,totalPagar,fecha,tipo
+PG7910,PD3857,Ramiro Vasquez,22.932,Sun Jan 29 15:19:44 ECT 2023,C

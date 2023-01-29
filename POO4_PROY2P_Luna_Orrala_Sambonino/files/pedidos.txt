@@ -1,0 +1,2 @@
+Idpedido,nombreCliente,total
+PD3857,Ramiro Vasquez,21.84

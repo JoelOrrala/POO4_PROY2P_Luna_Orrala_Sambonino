@@ -1,0 +1,20 @@
+descripcion,precio,tipo
+Hamburguesa simple,6.00,F
+Tiramisú,4.00,P
+Panna Cotta,5.00,P
+Hamburguesa completa,7.50,F
+Coca cola 400 ml,2.00,B
+Porción de alitas x6,7.00,F
+Sanduche de pollo grill,8.00,F
+Cheese fingers x5,3.00,Q
+Porción de alitas,9.00,F
+Aros de cebolla,4.00,Q
+Torta de chocolate,3.75,P
+Pay de limon,4.25,P
+Flan,3.50,P
+Agua Dasani 600 ml,1.00,B
+Fuze Tea 400 ml,1.75,B
+Sunny Durazno 300 ml,1.25,B
+Sprite 400 ml,2.25,B
+Porción de papas fritas,3.50,Q
+Nuggets de pollo,5.00,Q

@@ -1,0 +1,9 @@
+nombre,user,password
+Carolina Sabando,csabando,dkioeiw2
+Armando Mancilla,amancilla,qwrty
+Ana Rosero,arose,ihsywy
+Gerardo Campos,gcampos,28374jshs
+Ramiro Vasquez,rvasquez,RV1234
+Arturo Valenzuela,artval,uee2833
+Vanessa Hurtado,vanhurtado,uuu363
+Luisa Martínez,luisamart,lu2273ss
