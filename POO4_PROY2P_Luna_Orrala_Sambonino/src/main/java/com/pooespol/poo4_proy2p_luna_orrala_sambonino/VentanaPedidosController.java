@@ -17,6 +17,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -81,7 +82,10 @@ public class VentanaPedidosController implements Initializable {
     private Cliente cliente;
 
     /**
+     * /**
      * Initializes the controller class.
+     * @param url url
+     * @param rb ResourceBundle
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -294,7 +298,9 @@ public class VentanaPedidosController implements Initializable {
             alerta.setHeaderText("No ha hecho el pedido");
             alerta.showAndWait();
         }
-
+        Stage stage = (Stage) rootVPedidos.getScene().getWindow();
+                    Platform.runLater(() -> stage.close());
+                    
     }
 
 }
