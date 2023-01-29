@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import com.pooespol.poo4_proy2p_modelo.Pago;
+import com.pooespol.poo4_proy2p_modelo.Pedido;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -44,15 +45,12 @@ public class VentanaDespedidaController implements Initializable {
     @FXML
     VBox _rootdespedida;
     
+    private Pedido pedido;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         
-        
-        lblMensajeDespedida.setText("Su pedido N° ha sido pagado con éxito y ahora empezaremos a prepararlo.\n" 
-                    +"En aproximadamente 30 minutos llegará a su destino.\n"
-                    +"Gracias por preferirnos.");
         try ( FileInputStream input = new FileInputStream(new File(App.pathImg+"delivery_final.png"))) {
             Image img2 = new Image(input);
             imgdespedida.setImage(img2);
@@ -66,6 +64,14 @@ public class VentanaDespedidaController implements Initializable {
         
         
     }
+    
+    public void recuperarDato(Pedido p) {
+        this.pedido = p;
+        lblMensajeDespedida.setText("Su pedido N° "+pedido.getIdPedido()+" ha sido pagado con éxito y ahora empezaremos a prepararlo.\n" 
+                    +"En aproximadamente 30 minutos llegará a su destino.\n"
+                    +"Gracias por preferirnos.");
+    }
+    
     public void crearThreadNuevaVentana(Label labelCont) {
         Thread t2 = new Thread(new Runnable() {
             @Override

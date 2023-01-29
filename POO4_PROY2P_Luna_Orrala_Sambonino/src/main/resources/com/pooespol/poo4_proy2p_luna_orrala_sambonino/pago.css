@@ -1,0 +1,45 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 29 ene. 2023, 11:40:15
+    Author     : joelorrala
+*/
+
+
+#lblTitdireccion{
+    -fx-font-size: 35px;
+    -fx-font-family: "Impact";
+    -fx-text-fill: #eb984e;
+    -fx-font-weight: bold;
+}
+
+#lblDetalle{
+    -fx-font-size: 35px;
+    -fx-font-family: "Impact";
+    -fx-text-fill: #eb984e;
+    -fx-font-weight: bold;
+}
+
+#btlimpiar{
+    -fx-text-fill: black;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Georgia";
+    -fx-background-color: #f0b27a;
+}
+
+#btcontinuar{
+    -fx-text-fill: black;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Georgia";
+    -fx-background-color: #f0b27a;
+}
+
+#lblDireccion{
+    -fx-font-size: 14px; 
+    -fx-font-family: "Georgia"; 
+    -fx-font-weight: bold
+}

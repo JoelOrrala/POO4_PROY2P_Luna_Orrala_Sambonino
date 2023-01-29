@@ -241,30 +241,39 @@ public class VentanaPedidosController implements Initializable {
 
     @FXML
     public void continuar(ActionEvent e) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("VentanaPago.fxml"));
-            Pane rootVentanaPago = loader.load();
-            VentanaPagoController controladorPago = loader.getController();
-            
-            double subtotalFinal = Double.valueOf(lblSubtotal.getText());
-            double ivaFinal = Double.valueOf(lblSubtotal.getText());
-            double totalFinal = Double.valueOf(lblSubtotal.getText());
-            
-            Pedido pedidoEntregar = new Pedido(this.cliente,this.listPlatoEscogido,subtotalFinal,ivaFinal,totalFinal);
-            
-            controladorPago.recuperarDatosPedido(pedidoEntregar);
-            
-            Scene scene = new Scene(rootVentanaPago, 640, 700);
-//            scene.getStylesheets().add(App.class.getResource("pedido.css").toExternalForm());
-            Stage stage = new Stage();
+        double subtotalFinal = Double.valueOf(lblSubtotal.getText());
+        double ivaFinal = Double.valueOf(lblSubtotal.getText());
+        double totalFinal = Double.valueOf(lblTotal.getText());
+        if (subtotalFinal != 0.00) {
+            try {
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("VentanaPago.fxml"));
+                Pane rootVentanaPago = loader.load();
+                VentanaPagoController controladorPago = loader.getController();
+
+                Pedido pedidoEntregar = new Pedido(this.cliente, this.listPlatoEscogido, subtotalFinal, ivaFinal, totalFinal);
+
+                controladorPago.recuperarDatosPedido(pedidoEntregar);
+
+                Scene scene = new Scene(rootVentanaPago, 640, 700);
+                scene.getStylesheets().add(App.class.getResource("pago.css").toExternalForm());
+                Stage stage = new Stage();
 //            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setScene(scene);
-            stage.setTitle("The Good Burger Restaurant");
-            stage.show();
+                stage.setScene(scene);
+                stage.setTitle("The Good Burger Restaurant");
+                stage.show();
 
-        } catch (IOException ex) {
-            System.out.println("Error");
-
+            } catch (IOException ex) {
+                Alert alerta = new Alert(Alert.AlertType.ERROR);
+                alerta.setTitle("Error en Pedidos");
+                alerta.setHeaderText("Error, no puede continuar");
+                alerta.showAndWait();
+            }
+        } else {
+            Alert alerta = new Alert(Alert.AlertType.ERROR);
+            alerta.setTitle("Error en Pedidos");
+            alerta.setHeaderText("No ha hecho el pedido");
+            alerta.showAndWait();
         }
 
     }

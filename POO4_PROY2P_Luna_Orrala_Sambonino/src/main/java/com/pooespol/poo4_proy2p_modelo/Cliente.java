@@ -8,6 +8,7 @@ import com.pooespol.poo4_proy2p_luna_orrala_sambonino.App;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.Serializable;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
@@ -15,7 +16,7 @@ import java.util.ArrayList;
  *
  * @author joelorrala
  */
-public class Cliente {
+public class Cliente implements Serializable{
 
     private String nombre;
     private String usuario;

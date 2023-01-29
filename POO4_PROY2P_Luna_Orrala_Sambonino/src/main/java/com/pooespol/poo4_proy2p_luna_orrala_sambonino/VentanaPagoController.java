@@ -29,7 +29,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import com.pooespol.poo4_proy2p_modelo.*;
+import java.text.DecimalFormat;
 import java.util.Date;
+import javafx.scene.control.Alert;
 
 /**
  * FXML Controller class
@@ -72,11 +74,11 @@ public class VentanaPagoController implements Initializable {
     
     private Cliente clienteAct;
     private Pedido pedidoCli;
+    private double totalPagar = 0;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
         System.out.println(txtdireccion.getText());
 
         HBox hbox1 = new HBox();
@@ -108,22 +110,24 @@ public class VentanaPagoController implements Initializable {
         hbox4.getChildren().addAll(lbl4, txt4);
         hbox4.setSpacing(20);
         hbox4.setPadding(new Insets(5, 15, 10, 15));
-
-        lbl5.setText("Tendra que pagar ---- dólares por el incremento del 5% por uso de la tarjeta");
-
+        
+        DecimalFormat df = new DecimalFormat("#.00");
         vbtarjeta.getChildren().addAll(hbox1, hbox2, hbox3, hbox4, lbl5);
         vbtarjeta.setVisible(false);
         opciones.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue == rbtarjeta) {
                 vbtarjeta.setVisible(true);
                 tipo = TipoPago.C;
+                totalPagar = pedidoCli.getTotal() + (pedidoCli.getTotal() * 0.05);
+                lbl5.setText("Tendra que pagar " + df.format(totalPagar) + " dólares por el incremento del 5% por uso de la tarjeta");
+
             } else if (newValue == rbefectivo) {
                 vbtarjeta.setVisible(false);
                 lblmensajepago.setPadding(new Insets(5, 15, 10, 15));
-                lblmensajepago.setText("Tendra que pagar un total del ---- dólares. "
+                lblmensajepago.setText("Tendra que pagar un total de " + pedidoCli.getTotal() + " dólares." + "\n"
                         + "Aségurese de tener el dinero completo por si el repartidor no tiene cambio.");
                 tipo = TipoPago.E;
-
+                totalPagar = pedidoCli.getTotal();
             } else {
                 vbtarjeta.setVisible(false);
             }
@@ -133,18 +137,27 @@ public class VentanaPagoController implements Initializable {
         btcontinuar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent t) {
-                if (txtdireccion.getText().equals("") ) {
+                if (txtdireccion.getText().equals("")) {
                     lblmensajepago.setText("No ha llenado todos los campos");
-                } else {
+                } else if(txt1.getText().equals("") | txt2.getText().equals("") | txt3.getText().equals("") | txt4.getText().equals("")){
+                    lblmensajepago.setText("Faltan datos de la tarjeta de crédito");
+                }else {
+                    Thread threadGuardar = new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            pedidoCli.guardarObjetoPedido();
+                            pedidoCli.guardarPedido();
+                            Date fecha = new Date();
+                            Pago p = new Pago(clienteAct, pedidoCli, totalPagar, fecha, tipo);
+                            p.guardarPago();
+                        }
+                    });
+                    threadGuardar.start();
+                    
                     Stage stage = (Stage) rootpago.getScene().getWindow();
                     Platform.runLater(() -> stage.close());
                     Continuar();
-                    Date fecha = new Date();
-                    Pago p = new Pago(clienteAct, pedidoCli , pedidoCli.getTotal() ,fecha,tipo);
-                    p.guardarPago();
-
                 }
-
             }
 
         });
@@ -160,15 +173,17 @@ public class VentanaPagoController implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("VentanaDespedida.fxml"));
             Pane root = loader.load();
-            Scene scene = new Scene(root);
+            VentanaDespedidaController controladorDespedida = loader.getController();
+            controladorDespedida.recuperarDato(pedidoCli);
+            Scene scene = new Scene(root,690,470);
             Stage stage = new Stage();
-            scene.getStylesheets().add(App.class.getResource("ingreso.css").toExternalForm());
+            scene.getStylesheets().add(App.class.getResource("despedida.css").toExternalForm());
             stage.setScene(scene);
             stage.setTitle("The Good Burger Restaurant");
             stage.showAndWait();
 
         } catch (IOException ex) {
-            System.out.println("Error al momento de continuar");
+            ex.printStackTrace();
         }
 
     }

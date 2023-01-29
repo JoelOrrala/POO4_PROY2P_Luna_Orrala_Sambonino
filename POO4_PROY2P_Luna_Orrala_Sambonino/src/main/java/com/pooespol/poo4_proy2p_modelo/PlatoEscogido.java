@@ -4,11 +4,13 @@
  */
 package com.pooespol.poo4_proy2p_modelo;
 
+import java.io.Serializable;
+
 /**
  * Hace referencia al plato seleccionado por el cliente y adicionalmente se especifica la cantidad
  * @author joelorrala
  */
-public class PlatoEscogido extends Menu {
+public class PlatoEscogido extends Menu implements Serializable{
 
     private int cantidad;
     private double totalPlato;
