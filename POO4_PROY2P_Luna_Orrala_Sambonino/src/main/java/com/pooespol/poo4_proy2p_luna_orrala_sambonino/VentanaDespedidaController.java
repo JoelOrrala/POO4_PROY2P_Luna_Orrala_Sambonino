@@ -45,12 +45,15 @@ public class VentanaDespedidaController implements Initializable {
     @FXML
     VBox _rootdespedida;
     
-<<<<<<< HEAD
 
-=======
     private Pedido pedido;
     
->>>>>>> 448867e145af6b211bf44a7d54dcc00db4096951
+    /**
+     * inicia la ventana
+     * @param url url   
+     * @param rb ResourceBundle
+     */
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -68,18 +71,21 @@ public class VentanaDespedidaController implements Initializable {
         
         
     }
-<<<<<<< HEAD
-   
-=======
-    
+/**
+ * recupera dato del pago
+ * @param p 
+ */
     public void recuperarDato(Pedido p) {
         this.pedido = p;
         lblMensajeDespedida.setText("Su pedido N° "+pedido.getIdPedido()+" ha sido pagado con éxito y ahora empezaremos a prepararlo.\n" 
                     +"En aproximadamente 30 minutos llegará a su destino.\n"
                     +"Gracias por preferirnos.");
     }
-    
->>>>>>> 448867e145af6b211bf44a7d54dcc00db4096951
+ /**
+     * crea el hilo para cerrar la ventana
+     * @param labelCont label hilo
+     */
+
     public void crearThreadNuevaVentana(Label labelCont) {
         Thread t2 = new Thread(new Runnable() {
             @Override

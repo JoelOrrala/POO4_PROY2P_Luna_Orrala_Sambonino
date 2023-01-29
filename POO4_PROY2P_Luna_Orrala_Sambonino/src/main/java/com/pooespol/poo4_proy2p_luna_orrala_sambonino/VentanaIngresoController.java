@@ -81,7 +81,11 @@ public class VentanaIngresoController implements Initializable {
         });
 
     }
-    
+    /**
+     * ingresa al usuario
+     */
+
+
     public void ingresar() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("VentanaUsuario.fxml"));
