@@ -32,7 +32,6 @@ public class Pedido implements Serializable {
      * Constructor de la clase Pedido
      * @param cliente
      * @param listaPlatos
-     * @param direccionEntrega
      * @param subtotal
      * @param ivaPedido
      * @param total 
@@ -177,7 +176,7 @@ public class Pedido implements Serializable {
             objPed.writeObject(this);
             System.out.println("Objeto guardado");
         } catch (IOException e) {
-            System.out.println("No se ha podido guardar el objeto pedido");
+            System.out.println("No se pudo guardar el objeto Pedido");
         }
     }
 }
