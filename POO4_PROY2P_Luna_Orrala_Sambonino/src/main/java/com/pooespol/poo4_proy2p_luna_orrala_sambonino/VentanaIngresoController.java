@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -24,6 +25,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -49,6 +51,8 @@ public class VentanaIngresoController implements Initializable {
     private ImageView imgDer;
     @FXML
     private Label lblmensaje;
+    @FXML
+    private VBox root;
 
     /**
      * Initializes the controller class.
@@ -71,6 +75,9 @@ public class VentanaIngresoController implements Initializable {
             public void handle(ActionEvent t) {
                 if (Cliente.verificarCliente(listClientes, campoUsuario.getText(), campoContrasenia.getText()) == true) {
                     clienteIng = Cliente.retornarCliente(listClientes, campoUsuario.getText(), campoContrasenia.getText());
+                    Stage stage = (Stage) root.getScene().getWindow();
+                    Platform.runLater(() -> stage.close());
+                    
                     ingresar();
                 } else {
                     lblmensaje.setText("Ingreso no válido");
