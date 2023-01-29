@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="root" alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pooespol.poo4_proy2p_luna_orrala_sambonino.VentanaIngresoController">
+<VBox fx:id="rootingreso" alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pooespol.poo4_proy2p_luna_orrala_sambonino.VentanaIngresoController">
    <children>
       <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="600.0">
          <children>

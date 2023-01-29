@@ -52,7 +52,7 @@ public class VentanaIngresoController implements Initializable {
     @FXML
     private Label lblmensaje;
     @FXML
-    private VBox root;
+    private VBox rootingreso;
 
     /**
      * Initializes the controller class.
@@ -75,9 +75,8 @@ public class VentanaIngresoController implements Initializable {
             public void handle(ActionEvent t) {
                 if (Cliente.verificarCliente(listClientes, campoUsuario.getText(), campoContrasenia.getText()) == true) {
                     clienteIng = Cliente.retornarCliente(listClientes, campoUsuario.getText(), campoContrasenia.getText());
-                    Stage stage = (Stage) root.getScene().getWindow();
+                    Stage stage = (Stage) rootingreso.getScene().getWindow();
                     Platform.runLater(() -> stage.close());
-                    
                     ingresar();
                 } else {
                     lblmensaje.setText("Ingreso no válido");

@@ -73,7 +73,7 @@ public class VentanaDespedidaController implements Initializable {
     }
 /**
  * recupera dato del pago
- * @param p 
+ * @param p recuperardato
  */
     public void recuperarDato(Pedido p) {
         this.pedido = p;
