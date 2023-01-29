@@ -51,7 +51,10 @@ public class VentanaUsuarioController implements Initializable {
         // TODO
         listLocales = Local.leerLocales();
     }
-    
+    /**
+     * 
+     * @param c cliente 
+     */
     public void recuperarCliente(Cliente c) {
         this.clienteAct = c;
         lblBienvenida.setText("Bienvend@ "+clienteAct.getNombre());

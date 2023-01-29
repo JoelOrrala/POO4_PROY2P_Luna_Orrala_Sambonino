@@ -151,11 +151,12 @@ public class VentanaPagoController implements Initializable {
 
     }
     
+    
     public void recuperarDatosPedido(Pedido p) {
         this.clienteAct = p.getCliente();
         this.pedidoCli = p;
     }
-
+    
     public void Continuar() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("VentanaDespedida.fxml"));

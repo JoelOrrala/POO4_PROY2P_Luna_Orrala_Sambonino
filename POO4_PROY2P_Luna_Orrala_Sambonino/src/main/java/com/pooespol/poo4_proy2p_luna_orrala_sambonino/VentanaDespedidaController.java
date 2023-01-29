@@ -44,7 +44,7 @@ public class VentanaDespedidaController implements Initializable {
     @FXML
     VBox _rootdespedida;
     
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -66,6 +66,7 @@ public class VentanaDespedidaController implements Initializable {
         
         
     }
+   
     public void crearThreadNuevaVentana(Label labelCont) {
         Thread t2 = new Thread(new Runnable() {
             @Override

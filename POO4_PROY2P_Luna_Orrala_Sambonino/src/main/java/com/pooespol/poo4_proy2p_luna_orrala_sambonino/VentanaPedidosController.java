@@ -101,11 +101,16 @@ public class VentanaPedidosController implements Initializable {
         lblSubtotal.setText("0.00");
 
     }
-    
+    /**
+     * 
+     * @param c recupera cliente 
+     */
     public void recuperarCliente(Cliente c) {
         this.cliente = c;
     }
-
+    /**
+     * encabezado del gridpane
+     */
     @FXML
     public void encabezarGridPane() {
         Label l1 = new Label("Descripción");
@@ -140,12 +145,7 @@ public class VentanaPedidosController implements Initializable {
 
     }
 
-    /**
-     * ComboBox para que el usuario escoga el ordenamiento de los elementos sea
-     * por los precios de forma ascedente o por sus nombres de forma ascendente
-     *
-     * @param event
-     */
+    
     @FXML
     public void ordenarGridPane(ActionEvent event) {
         String selecOrden = (String) cbxOrdenar.getValue();
@@ -221,7 +221,7 @@ public class VentanaPedidosController implements Initializable {
 
         }
     }
-
+    
     @FXML
     public void llenarGridPane(ActionEvent e) {
         mostrarMenu();
@@ -238,7 +238,7 @@ public class VentanaPedidosController implements Initializable {
         lblIVA.setText(String.valueOf(df.format(iva)));
         lblTotal.setText(String.valueOf(df.format(total)));
     }
-
+    
     @FXML
     public void continuar(ActionEvent e) {
         try {

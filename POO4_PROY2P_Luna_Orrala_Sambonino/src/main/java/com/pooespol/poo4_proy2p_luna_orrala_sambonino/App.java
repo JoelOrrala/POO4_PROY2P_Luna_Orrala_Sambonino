@@ -43,7 +43,10 @@ public class App extends Application {
         stage.setResizable(false);
 
     }
-
+    /**
+     * 
+     * @param args main
+     */
     public static void main(String[] args) {
         launch();
     }
