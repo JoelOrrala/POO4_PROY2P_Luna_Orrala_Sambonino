@@ -125,7 +125,7 @@ public class VentanaPagoController implements Initializable {
         opciones.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue == rbtarjeta) {
                 lblmensajepago.setText("");
-                lblmensajepago.setText("");
+                lblmensajepago2.setText("");
                 vbtarjeta.setVisible(true);
                 tipo = TipoPago.C;
                 totalPagar = pedidoCli.getTotal() + (pedidoCli.getTotal() * 0.05);

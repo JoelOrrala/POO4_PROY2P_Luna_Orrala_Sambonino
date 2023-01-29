@@ -1,17 +1,2 @@
 Idpedido,nombreCliente,total
-PD6620,Ana Rosero,28.28
-PD5197,Carolina Sabando,73.92
-PD3732,Carolina Sabando,73.92
-PD5806,Arturo Valenzuela,13.72
-PD0255,Gerardo Campos,8.96
-PD4232,Arturo Valenzuela,11.76
-PD6720,Luisa Martínez,11.2
-PD0036,Arturo Valenzuela,22.4
-PD9938,Arturo Valenzuela,3.92
-PD9726,Ramiro Vasquez,22.4
-PD4217,Ana Rosero,28.0
-PD9539,Ana Rosero,8.12
-PD1109,Ana Rosero,8.12
-PD9898,Vanessa Hurtado,22.4
-PD8213,Ana Rosero,31.08
-PD4474,Carolina Sabando,18.2
+PD3857,Ramiro Vasquez,21.84
