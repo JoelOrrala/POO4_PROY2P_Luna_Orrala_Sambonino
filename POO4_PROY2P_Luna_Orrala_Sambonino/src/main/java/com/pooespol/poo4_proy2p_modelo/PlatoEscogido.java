@@ -11,6 +11,7 @@ package com.pooespol.poo4_proy2p_modelo;
 public class PlatoEscogido extends Menu {
 
     private int cantidad;
+    private double totalPlato;
     
     /**
      * Constructor de clase PlatoEscogido
@@ -22,6 +23,7 @@ public class PlatoEscogido extends Menu {
     public PlatoEscogido(String descripcion, double precio, TipoMenu tipo, int cantidad) {
         super(descripcion, precio, tipo);
         this.cantidad = cantidad;
+        this.totalPlato = precio * cantidad;
     }
     
     /**
@@ -39,4 +41,14 @@ public class PlatoEscogido extends Menu {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
+
+    public double getTotalPlato() {
+        return totalPlato;
+    }
+
+    public void setTotalPlato(double totalPlato) {
+        this.totalPlato = totalPlato;
+    }
+    
+    
 }

@@ -22,7 +22,6 @@ public class Pedido implements Serializable {
     private String idPedido;
     private Cliente cliente;
     private ArrayList<PlatoEscogido> listaPlatos;
-    private String direccionEntrega;
     private double subtotal;
     private double ivaPedido;
     private double total;
@@ -38,11 +37,10 @@ public class Pedido implements Serializable {
      * @param ivaPedido
      * @param total 
      */
-    public Pedido(Cliente cliente, ArrayList<PlatoEscogido> listaPlatos, String direccionEntrega, double subtotal, double ivaPedido, double total) {
+    public Pedido(Cliente cliente, ArrayList<PlatoEscogido> listaPlatos, double subtotal, double ivaPedido, double total) {
         this.idPedido = generarCodigoPedido();
         this.cliente = cliente;
         this.listaPlatos = listaPlatos;
-        this.direccionEntrega = direccionEntrega;
         this.subtotal = subtotal;
         this.ivaPedido = ivaPedido;
         this.total = total;
@@ -86,22 +84,6 @@ public class Pedido implements Serializable {
      */
     public void setListaPlatos(ArrayList<PlatoEscogido> listaPlatos) {
         this.listaPlatos = listaPlatos;
-    }
-    
-    /**
-     * 
-     * @return dirección de entrega al cliente
-     */
-    public String getDireccionEntrega() {
-        return direccionEntrega;
-    }
-    
-    /**
-     * Permite cambiar la dirección de entrega al cliente
-     * @param direccionEntrega 
-     */
-    public void setDireccionEntrega(String direccionEntrega) {
-        this.direccionEntrega = direccionEntrega;
     }
     
     /**
@@ -172,7 +154,7 @@ public class Pedido implements Serializable {
      */
     @Override
     public String toString() {
-        return "Pedido{idPedido: " + idPedido + ", cliente: " + cliente.getNombre() + ", lista platos: " + listaPlatos + ", dirección entrega: " + direccionEntrega
+        return "Pedido{idPedido: " + idPedido + ", cliente: " + cliente.getNombre() + ", lista platos: " + listaPlatos
                 + ", subtotal: " + subtotal + ", iva pedido: " + ivaPedido + " , total: " + total;
     }
     

@@ -69,6 +69,9 @@ public class VentanaPagoController implements Initializable {
     private ToggleGroup opciones;
 
     private TipoPago tipo;
+    
+    private Cliente clienteAct;
+    private Pedido pedidoCli;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -191,6 +194,11 @@ public class VentanaPagoController implements Initializable {
 
         });
 
+    }
+    
+    public void recuperarDatosPedido(Pedido p) {
+        this.clienteAct = p.getCliente();
+        this.pedidoCli = p;
     }
 
     public void Continuar() {

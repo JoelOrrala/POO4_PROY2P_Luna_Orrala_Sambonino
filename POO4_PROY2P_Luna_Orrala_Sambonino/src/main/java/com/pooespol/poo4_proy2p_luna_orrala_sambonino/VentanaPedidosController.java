@@ -4,12 +4,16 @@
  */
 package com.pooespol.poo4_proy2p_luna_orrala_sambonino;
 
+import com.pooespol.poo4_proy2p_modelo.Cliente;
 import com.pooespol.poo4_proy2p_modelo.ComparadorDePrecios;
 import com.pooespol.poo4_proy2p_modelo.Menu;
+import com.pooespol.poo4_proy2p_modelo.Pedido;
 import com.pooespol.poo4_proy2p_modelo.PlatoEscogido;
 import com.pooespol.poo4_proy2p_modelo.TipoMenu;
+import com.pooespol.poo4_proy2p_modelo.ValorInsuficienteException;
 import java.io.IOException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.ResourceBundle;
@@ -21,6 +25,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -72,6 +77,8 @@ public class VentanaPedidosController implements Initializable {
     private ArrayList<PlatoEscogido> listPlatoEscogido;
 
     private ObservableList<PlatoEscogido> datosVentana;
+    
+    private Cliente cliente;
 
     /**
      * Initializes the controller class.
@@ -85,11 +92,18 @@ public class VentanaPedidosController implements Initializable {
         datosVentana = FXCollections.observableArrayList();
         columnDescripcion.setCellValueFactory(new PropertyValueFactory("descripcion"));
         columnCantidad.setCellValueFactory(new PropertyValueFactory("cantidad"));
-        columnValor.setCellValueFactory(new PropertyValueFactory("precio"));
+        columnValor.setCellValueFactory(new PropertyValueFactory("totalPlato"));
         listPlatoEscogido = new ArrayList<>();
         cbxOrdenar.getItems().setAll("Precio", "Nombre");
         Collections.sort(listMenu, new ComparadorDePrecios());
+        lblIVA.setText("0.00");
+        lblTotal.setText("0.00");
+        lblSubtotal.setText("0.00");
 
+    }
+    
+    public void recuperarCliente(Cliente c) {
+        this.cliente = c;
     }
 
     @FXML
@@ -120,6 +134,9 @@ public class VentanaPedidosController implements Initializable {
         lblIVA.setText("0.00");
         lblTotal.setText("0.00");
         lblSubtotal.setText("0.00");
+        listPlatoEscogido.clear();
+        datosVentana.clear();
+        encabezarGridPane();
 
     }
 
@@ -165,11 +182,29 @@ public class VentanaPedidosController implements Initializable {
                     btnAgregar.setOnAction(new EventHandler<ActionEvent>() {
                         @Override
                         public void handle(ActionEvent t) {
-                            PlatoEscogido plato = new PlatoEscogido(m.getDescripcion(), m.getPrecio(), m.getTipoMenu(), Integer.parseInt(tCantidad.getText()));
-                            listPlatoEscogido.add(plato);
-                            datosVentana.add(plato);
-                            tableVPedido.setItems(datosVentana);
-
+                            try {
+                                String cantidadTxt = tCantidad.getText();
+                                if (cantidadTxt.equals("0")) {
+                                    throw new ValorInsuficienteException("Ingrese una cantidad válida");
+                                } else {
+                                    int cantidadInt = Integer.parseInt(cantidadTxt);
+                                    PlatoEscogido plato = new PlatoEscogido(m.getDescripcion(), m.getPrecio(), m.getTipoMenu(), cantidadInt);
+                                    listPlatoEscogido.add(plato);
+                                    datosVentana.add(plato);
+                                    tableVPedido.setItems(datosVentana);
+                                    mostrarDatosLabel(plato.getTotalPlato());
+                                }
+                            } catch (ValorInsuficienteException va) {
+                                Alert alerta = new Alert(Alert.AlertType.ERROR);
+                                alerta.setTitle("Error en Pedidos");
+                                alerta.setHeaderText(va.getMessage());
+                                alerta.showAndWait();
+                            } catch(NumberFormatException numEx){
+                                Alert alerta = new Alert(Alert.AlertType.ERROR);
+                                alerta.setTitle("Error en Pedidos");
+                                alerta.setHeaderText("Verifique el casillero de cantidad");
+                                alerta.showAndWait();
+                            }
                         }
 
                     });
@@ -191,13 +226,34 @@ public class VentanaPedidosController implements Initializable {
     public void llenarGridPane(ActionEvent e) {
         mostrarMenu();
     }
+    
+    @FXML
+    public void mostrarDatosLabel(double subtotal){
+        DecimalFormat df = new DecimalFormat("#.00");
+        double subAntes = Double.valueOf(lblSubtotal.getText());
+        double subDesp = subAntes + subtotal;
+        double iva = subDesp * 0.12;
+        double total = subDesp + iva;
+        lblSubtotal.setText(String.valueOf(df.format(subDesp)));
+        lblIVA.setText(String.valueOf(df.format(iva)));
+        lblTotal.setText(String.valueOf(df.format(total)));
+    }
 
     @FXML
     public void continuar(ActionEvent e) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("VentanaPago.fxml"));
             Pane rootVentanaPago = loader.load();
-//            VentanaIngresoController controladorIngreso = loader.getController();
+            VentanaPagoController controladorPago = loader.getController();
+            
+            double subtotalFinal = Double.valueOf(lblSubtotal.getText());
+            double ivaFinal = Double.valueOf(lblSubtotal.getText());
+            double totalFinal = Double.valueOf(lblSubtotal.getText());
+            
+            Pedido pedidoEntregar = new Pedido(this.cliente,this.listPlatoEscogido,subtotalFinal,ivaFinal,totalFinal);
+            
+            controladorPago.recuperarDatosPedido(pedidoEntregar);
+            
             Scene scene = new Scene(rootVentanaPago, 640, 700);
 //            scene.getStylesheets().add(App.class.getResource("pedido.css").toExternalForm());
             Stage stage = new Stage();

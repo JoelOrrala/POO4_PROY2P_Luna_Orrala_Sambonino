@@ -181,7 +181,8 @@ public class VentanaUsuarioController implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("VentanaPedidos.fxml"));
             Pane root = loader.load();
-//            VentanaIngresoController controladorIngreso = loader.getController();
+            VentanaPedidosController controladorPedido = loader.getController();
+            controladorPedido.recuperarCliente(clienteAct);
             Scene scene = new Scene(root,640,700);
             scene.getStylesheets().add(App.class.getResource("pedido.css").toExternalForm());
             Stage stage = new Stage();
