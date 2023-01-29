@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * Clase menú hace referencia al menú de platillos que se ofrece en el restaurante
  * @author joelorrala
  */
-public class Menu {
+public class Menu implements Comparable<Menu>{
 
     private String descripcion;
     private double precio;
@@ -99,22 +99,27 @@ public class Menu {
         return listMenu;
     }
     
-    public static  TipoMenu obtenerTipo(String s){
-        
+    public static TipoMenu obtenerTipo(String s) {
+
         TipoMenu resultado = null;
-        if (s.equals("Platos Fuertes")){
-            resultado =  TipoMenu.F;
-        }
-        else if (s.equals("Postres")){
-            resultado = TipoMenu.P;
-        }
-        else if (s.equals("Bebidas")){
-            resultado = TipoMenu.B;
-        }
-        else if (s.equals("Piqueos")){
-            resultado = TipoMenu.Q;
+        if (s != null) {
+            if (s.equals("Platos Fuertes")) {
+                resultado = TipoMenu.F;
+            } else if (s.equals("Postres")) {
+                resultado = TipoMenu.P;
+            } else if (s.equals("Bebidas")) {
+                resultado = TipoMenu.B;
+            } else if (s.equals("Piqueos")) {
+                resultado = TipoMenu.Q;
+            }
         }
         return resultado;
-        
+
     }
+
+    @Override
+    public int compareTo(Menu m2) {
+        return this.descripcion.compareTo(m2.getDescripcion());
+    }
+    
 }

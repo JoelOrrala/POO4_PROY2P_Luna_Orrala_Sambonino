@@ -32,7 +32,7 @@
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin></Label>
-            <ComboBox fx:id="cbxOrdenar" prefWidth="150.0" />
+            <ComboBox fx:id="cbxOrdenar" onAction="#ordenarGridPane" prefWidth="150.0" />
          </children></HBox>
       <HBox prefHeight="21.0" prefWidth="600.0" spacing="320.0">
          <children>
@@ -43,43 +43,46 @@
             <Label fx:id="lblPedido" text="Pedido" />
          </children>
       </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+      <HBox prefHeight="298.0" prefWidth="600.0" spacing="30.0">
          <children>
-            <GridPane fx:id="gridPaneOp" alignment="CENTER" prefHeight="89.0" prefWidth="299.0">
+            <GridPane fx:id="gridPaneOp" alignment="CENTER" prefHeight="122.0" prefWidth="308.0">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="112.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="119.0" minWidth="10.0" prefWidth="41.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="125.0" minWidth="10.0" prefWidth="72.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="74.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="138.0" minWidth="10.0" prefWidth="138.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="119.0" minWidth="10.0" prefWidth="46.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="125.0" minWidth="10.0" prefWidth="57.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="66.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="39.0" minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="23.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="45.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="45.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="45.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="45.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="45.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="45.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <HBox.margin>
                   <Insets left="15.0" />
                </HBox.margin>
             </GridPane>
-            <TableView fx:id="tableVPedido" prefHeight="96.0" prefWidth="227.0">
+            <TableView fx:id="tableVPedido" prefHeight="119.0" prefWidth="249.0">
               <columns>
-                <TableColumn fx:id="columnDescripcion" prefWidth="75.0" text="Decripción" />
-                <TableColumn fx:id="columnCantidad" prefWidth="75.0" text="Cantidad" />
-                  <TableColumn fx:id="columnValor" prefWidth="75.0" text="Valor" />
+                <TableColumn fx:id="columnDescripcion" prefWidth="129.0" text="Decripción" />
+                <TableColumn fx:id="columnCantidad" prefWidth="64.0" text="Cantidad" />
+                  <TableColumn fx:id="columnValor" prefWidth="55.0" text="Valor" />
               </columns>
             </TableView>
          </children>
       </HBox>
       <HBox alignment="TOP_RIGHT" prefHeight="68.0" prefWidth="600.0">
          <children>
-            <VBox prefHeight="81.0" prefWidth="106.0">
+            <VBox prefHeight="81.0" prefWidth="106.0" spacing="8.0">
                <children>
                   <Label fx:id="lbldat1" text="Subtotal:" />
                   <Label fx:id="lbldat2" text="IVA:" />
                   <Label fx:id="lbldat3" text="Total:" />
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0">
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="8.0">
                <children>
                   <Label fx:id="lblSubtotal" text="Label" />
                   <Label fx:id="lbliva" text="Label" />
@@ -90,7 +93,7 @@
       </HBox>
       <HBox alignment="TOP_CENTER" prefHeight="72.0" prefWidth="600.0" spacing="40.0">
          <children>
-            <Button fx:id="btnContinuar" mnemonicParsing="false" text="Continuar" />
+            <Button fx:id="btnContinuar" mnemonicParsing="false" onAction="#continuar" text="Continuar" />
             <Button fx:id="btnLimpiar" mnemonicParsing="false" onAction="#limpiar" text="Limpiar" />
          </children>
       </HBox>

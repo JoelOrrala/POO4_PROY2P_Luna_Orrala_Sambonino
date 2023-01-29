@@ -4,12 +4,13 @@
  */
 package com.pooespol.poo4_proy2p_luna_orrala_sambonino;
 
+import com.pooespol.poo4_proy2p_modelo.ComparadorDePrecios;
 import com.pooespol.poo4_proy2p_modelo.Menu;
 import com.pooespol.poo4_proy2p_modelo.PlatoEscogido;
 import com.pooespol.poo4_proy2p_modelo.TipoMenu;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Observable;
+import java.util.Collections;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,7 +18,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -76,6 +76,8 @@ public class VentanaPedidosController implements Initializable {
         columnCantidad.setCellValueFactory(new PropertyValueFactory("cantidad"));
         columnValor.setCellValueFactory(new PropertyValueFactory("precio"));
         listPlatoEscogido = new ArrayList<>();
+        cbxOrdenar.getItems().setAll("Precio", "Nombre");
+        Collections.sort(listMenu,new ComparadorDePrecios());
 
     }
 
@@ -83,7 +85,7 @@ public class VentanaPedidosController implements Initializable {
     public void encabezarGridPane() {
         Label l1 = new Label("Descripción");
         l1.setStyle("-fx-font-size: 11px; -fx-font-family: Georgia; -fx-font-weight: bold");
-        Label l2 = new Label("    Precio");
+        Label l2 = new Label("Precio");
         l2.setStyle("-fx-font-size: 11px; -fx-font-family: Georgia; -fx-font-weight: bold");
         Label l3 = new Label("Cantidad");
         l3.setStyle("-fx-font-size: 11px; -fx-font-family: Georgia; -fx-font-weight: bold");
@@ -98,12 +100,25 @@ public class VentanaPedidosController implements Initializable {
     }
 
     @FXML
-    public void llenarGridPane(ActionEvent e) {
+    public void ordenarGridPane(ActionEvent event){
+        String selecOrden = (String) cbxOrdenar.getValue();
+        if(selecOrden.equals( "Precio")){
+            Collections.sort(listMenu,new ComparadorDePrecios());
+            mostrarMenu();
+        }else if(selecOrden.equals( "Nombre")){
+            Collections.sort(listMenu);
+            mostrarMenu();
+        }
+    }
+    
+    @FXML
+    public void mostrarMenu(){
         String seleccion = (String) cbxTipo.getValue();
         TipoMenu nombre = Menu.obtenerTipo(seleccion);
         gridPaneOp.getChildren().clear();
-
-        if (seleccion != "") {
+        encabezarGridPane();
+        
+        if (seleccion != null) {
             int n = 1;
             for (Menu m : listMenu) {
                 if (m.getTipoMenu() == nombre) {
@@ -126,7 +141,6 @@ public class VentanaPedidosController implements Initializable {
                     });
                     gridPaneOp.add(lDescripcion, 0, n);
                     gridPaneOp.add(lPrecio, 1, n);
-
                     gridPaneOp.add(tCantidad, 2, n);
                     gridPaneOp.add(btnAgregar, 3, n);
 
@@ -137,7 +151,16 @@ public class VentanaPedidosController implements Initializable {
             }
 
         }
+    }
 
+    @FXML
+    public void llenarGridPane(ActionEvent e) {
+        mostrarMenu();
+    }
+    
+    @FXML
+    public void continuar(ActionEvent e){
+        
     }
 
 }
