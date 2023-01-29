@@ -76,15 +76,8 @@ public class VentanaPagoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-
+        
         System.out.println(txtdireccion.getText());
-//        btlimpiar.setOnMouseClicked(new EventHandler<MouseEvent>() {
-//            @Override
-//            public void handle(MouseEvent t) {
-//                txtdireccion.clear();
-//                lblmensajepago.setText(" ");
-//            }
-//        });
 
         HBox hbox1 = new HBox();
         HBox hbox2 = new HBox();
@@ -120,7 +113,6 @@ public class VentanaPagoController implements Initializable {
 
         vbtarjeta.getChildren().addAll(hbox1, hbox2, hbox3, hbox4, lbl5);
         vbtarjeta.setVisible(false);
-//        RadioButton elegido = (RadioButton) opciones.getSelectedToggle();
         opciones.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue == rbtarjeta) {
                 vbtarjeta.setVisible(true);
@@ -136,57 +128,20 @@ public class VentanaPagoController implements Initializable {
                 vbtarjeta.setVisible(false);
             }
         });
-//        if (rbtarjeta.isSelected()) {
-//
-//            rbtarjeta.setOnAction(e -> {
-//                HBox hbox1 = new HBox();
-//                HBox hbox2 = new HBox();
-//                HBox hbox3 = new HBox();
-//                HBox hbox4 = new HBox();
-//                TextField txt1 = new TextField();
-//                TextField txt2 = new TextField();
-//                TextField txt3 = new TextField();
-//                TextField txt4 = new TextField();
-//                Label lbl1 = new Label("Titular: ");
-//                Label lbl2 = new Label("Numero : ");
-//                Label lbl3 = new Label("Caducidad: ");
-//                Label lbl4 = new Label("CVV: ");
-//
-//                hbox1.getChildren().addAll(lbl1, txt1);
-//                hbox1.setSpacing(20);
-//
-//                hbox2.getChildren().addAll(lbl2, txt2);
-//                hbox2.setSpacing(20);
-//
-//                hbox3.getChildren().addAll(lbl3, txt3);
-//                hbox3.setSpacing(20);
-//
-//                hbox4.getChildren().addAll(lbl4, txt4);
-//                hbox4.setSpacing(20);
-//
-//                vbtarjeta.getChildren().addAll(hbox1, hbox2, hbox3, hbox4);
-//
-//            });
-//
-//        }
-//        if (rbefectivo.isSelected()) {
-//            lblmensajepago.setText("Tendra que pagar un total del ---- dólares.\n"
-//                    + "Aségurese de tener el dinero completo por si el repartidor no tiene cambio.");
-//        }
-//        System.out.println(elegido.getText());
+
 
         btcontinuar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent t) {
-                if (txtdireccion.getText().equals("")) {
+                if (txtdireccion.getText().equals("") ) {
                     lblmensajepago.setText("No ha llenado todos los campos");
                 } else {
                     Stage stage = (Stage) rootpago.getScene().getWindow();
                     Platform.runLater(() -> stage.close());
                     Continuar();
-//                    Date fecha = new Date();
-//                    Pago p = new Pago(cliente, pedido , total_pagar ,fecha,tipo);
-//                    p.guardarPago();
+                    Date fecha = new Date();
+                    Pago p = new Pago(clienteAct, pedidoCli , pedidoCli.getTotal() ,fecha,tipo);
+                    p.guardarPago();
 
                 }
 

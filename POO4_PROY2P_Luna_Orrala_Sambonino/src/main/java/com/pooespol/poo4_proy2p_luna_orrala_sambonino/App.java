@@ -14,10 +14,21 @@ import java.io.IOException;
 public class App extends Application {
 
     private static Scene scene;
-
+    /**
+     * ruta archivos
+     */
     public static String pathFiles = "src/main/resources/files/";
+    /**
+     * ruta imagenes
+     */
     public static String pathImg = "src/main/resources/images/";
+    /**
+     * ruta pedidos
+     */
     public static String pathPed = "src/main/resources/pedidos/";
+    /**
+     * ruta estilos 
+     */
     public static String pathStyles = "src/main/resources/styles/";
 
     @Override
