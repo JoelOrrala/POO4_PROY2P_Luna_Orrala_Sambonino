@@ -13,3 +13,5 @@ PD4217,Ana Rosero,28.0
 PD9539,Ana Rosero,8.12
 PD1109,Ana Rosero,8.12
 PD9898,Vanessa Hurtado,22.4
+PD8213,Ana Rosero,31.08
+PD4474,Carolina Sabando,18.2

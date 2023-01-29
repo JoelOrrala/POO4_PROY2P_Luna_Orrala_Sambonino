@@ -44,28 +44,31 @@ public class VentanaPagoController implements Initializable {
      * Initializes the controller class.
      */
     @FXML
-    VBox rootpago;
+    private VBox rootpago;
 
     @FXML
-    TextField txtdireccion;
+    private TextField txtdireccion;
 
     @FXML
-    RadioButton rbefectivo;
+    private RadioButton rbefectivo;
 
     @FXML
-    RadioButton rbtarjeta;
+    private RadioButton rbtarjeta;
 
     @FXML
-    Label lblmensajepago;
+    private Label lblmensajepago;
+    
+    @FXML
+    private Label lblmensajepago2;
 
     @FXML
-    Button btcontinuar;
+    private Button btcontinuar;
 
     @FXML
-    Button btlimpiar;
+    private Button btlimpiar;
 
     @FXML
-    VBox vbtarjeta;
+    private VBox vbtarjeta;
 
     @FXML
     private ToggleGroup opciones;
@@ -75,6 +78,11 @@ public class VentanaPagoController implements Initializable {
     private Cliente clienteAct;
     private Pedido pedidoCli;
     private double totalPagar = 0;
+    
+    private TextField txt1;
+    private TextField txt2;
+    private TextField txt3;
+    private TextField txt4;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -85,10 +93,10 @@ public class VentanaPagoController implements Initializable {
         HBox hbox2 = new HBox();
         HBox hbox3 = new HBox();
         HBox hbox4 = new HBox();
-        TextField txt1 = new TextField();
-        TextField txt2 = new TextField();
-        TextField txt3 = new TextField();
-        TextField txt4 = new TextField();
+        txt1 = new TextField();
+        txt2 = new TextField();
+        txt3 = new TextField();
+        txt4 = new TextField();
         Label lbl1 = new Label("Titular: ");
         Label lbl2 = new Label("Numero : ");
         Label lbl3 = new Label("Caducidad: ");
@@ -116,6 +124,8 @@ public class VentanaPagoController implements Initializable {
         vbtarjeta.setVisible(false);
         opciones.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue == rbtarjeta) {
+                lblmensajepago.setText("");
+                lblmensajepago.setText("");
                 vbtarjeta.setVisible(true);
                 tipo = TipoPago.C;
                 totalPagar = pedidoCli.getTotal() + (pedidoCli.getTotal() * 0.05);
@@ -124,8 +134,8 @@ public class VentanaPagoController implements Initializable {
             } else if (newValue == rbefectivo) {
                 vbtarjeta.setVisible(false);
                 lblmensajepago.setPadding(new Insets(5, 15, 10, 15));
-                lblmensajepago.setText("Tendra que pagar un total de " + pedidoCli.getTotal() + " dólares." + "\n"
-                        + "Aségurese de tener el dinero completo por si el repartidor no tiene cambio.");
+                lblmensajepago.setText("Tendra que pagar un total de " + pedidoCli.getTotal() + " dólares.");
+                lblmensajepago2.setText("Aségurese de tener el dinero completo por si el repartidor no tiene cambio.");
                 tipo = TipoPago.E;
                 totalPagar = pedidoCli.getTotal();
             } else {
@@ -201,6 +211,11 @@ public class VentanaPagoController implements Initializable {
         if (txtdireccion != null) {
             txtdireccion.clear();
         }
+        txt1.clear();
+        txt2.clear();
+        txt3.clear();
+        txt4.clear();
+        
         lblmensajepago.setText("");
         rbtarjeta.setSelected(false);
         rbefectivo.setSelected(false);
