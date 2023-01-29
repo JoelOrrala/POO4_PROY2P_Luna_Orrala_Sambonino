@@ -144,6 +144,13 @@ public class VentanaPedidosController implements Initializable {
         encabezarGridPane();
 
     }
+    /**
+     * ComboBox para que el usuario escoga el ordenamiento de los elementos sea
+     * por los precios de forma ascedente o por sus nombres de forma ascendente
+
+     *
+     * @param event gridpaneord
+     */
 
     
     @FXML
@@ -221,12 +228,20 @@ public class VentanaPedidosController implements Initializable {
 
         }
     }
-    
+    /**
+     * llena el gridpane
+     * @param e gridpane
+     */
+
     @FXML
     public void llenarGridPane(ActionEvent e) {
         mostrarMenu();
     }
-    
+    /**
+     * muestra los datos del label
+     * @param subtotal subtotal
+     */
+
     @FXML
     public void mostrarDatosLabel(double subtotal){
         DecimalFormat df = new DecimalFormat("#.00");
@@ -238,7 +253,11 @@ public class VentanaPedidosController implements Initializable {
         lblIVA.setText(String.valueOf(df.format(iva)));
         lblTotal.setText(String.valueOf(df.format(total)));
     }
-    
+    /**
+     * continua a la ventnana pago
+     * @param e ActionEvent
+     */
+
     @FXML
     public void continuar(ActionEvent e) {
         double subtotalFinal = Double.valueOf(lblSubtotal.getText());
