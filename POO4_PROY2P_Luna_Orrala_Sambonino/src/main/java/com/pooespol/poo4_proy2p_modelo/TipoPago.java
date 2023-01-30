@@ -12,7 +12,7 @@ public enum TipoPago {
     /**
      * Efectivo
      */
-    E, 
+    E,
     /**
      * Tarjeta de crédito
      */

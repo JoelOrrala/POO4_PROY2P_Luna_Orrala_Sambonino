@@ -36,7 +36,7 @@ import javafx.stage.Stage;
  * @author L.Luna
  */
 public class VentanaUsuarioController implements Initializable {
-    
+
     private Cliente clienteAct;
     private ArrayList<Local> listLocales;
 
@@ -51,13 +51,14 @@ public class VentanaUsuarioController implements Initializable {
         // TODO
         listLocales = Local.leerLocales();
     }
+
     /**
-     * 
-     * @param c cliente 
+     *
+     * @param c cliente
      */
     public void recuperarCliente(Cliente c) {
         this.clienteAct = c;
-        lblBienvenida.setText("Bienvend@ "+clienteAct.getNombre());
+        lblBienvenida.setText("Bienvend@ " + clienteAct.getNombre());
     }
 
     /**
@@ -124,7 +125,7 @@ public class VentanaUsuarioController implements Initializable {
                                             + l.getDireccion() + "\n"
                                             + l.getHorario() + "\n"
                                     );
-                                    
+
                                     Thread hiloInfo = new Thread(new Runnable() {
 
                                         @Override
@@ -136,7 +137,7 @@ public class VentanaUsuarioController implements Initializable {
 
                                                 try {
                                                     Thread.sleep(1000);
-                                                    
+
                                                 } catch (InterruptedException ex) {
 
                                                 }
@@ -153,7 +154,7 @@ public class VentanaUsuarioController implements Initializable {
                                                     }
 
                                                 });
-                                                
+
                                             }
                                         }
                                     });
@@ -186,7 +187,7 @@ public class VentanaUsuarioController implements Initializable {
             Pane root = loader.load();
             VentanaPedidosController controladorPedido = loader.getController();
             controladorPedido.recuperarCliente(clienteAct);
-            Scene scene = new Scene(root,640,700);
+            Scene scene = new Scene(root, 640, 700);
             scene.getStylesheets().add(App.class.getResource("pedido.css").toExternalForm());
             Stage stage = new Stage();
 //            stage.initModality(Modality.APPLICATION_MODAL);

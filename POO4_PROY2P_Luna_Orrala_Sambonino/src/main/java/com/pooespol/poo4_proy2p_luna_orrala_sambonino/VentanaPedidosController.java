@@ -78,12 +78,13 @@ public class VentanaPedidosController implements Initializable {
     private ArrayList<PlatoEscogido> listPlatoEscogido;
 
     private ObservableList<PlatoEscogido> datosVentana;
-    
+
     private Cliente cliente;
 
     /**
      * /**
      * Initializes the controller class.
+     *
      * @param url url
      * @param rb ResourceBundle
      */
@@ -105,13 +106,15 @@ public class VentanaPedidosController implements Initializable {
         lblSubtotal.setText("0.00");
 
     }
+
     /**
-     * 
-     * @param c recupera cliente 
+     *
+     * @param c recupera cliente
      */
     public void recuperarCliente(Cliente c) {
         this.cliente = c;
     }
+
     /**
      * encabezado del gridpane
      */
@@ -148,15 +151,15 @@ public class VentanaPedidosController implements Initializable {
         encabezarGridPane();
 
     }
+
     /**
      * ComboBox para que el usuario escoga el ordenamiento de los elementos sea
      * por los precios de forma ascedente o por sus nombres de forma ascendente
-
+     *
      *
      * @param event gridpaneord
      */
 
-    
     @FXML
     public void ordenarGridPane(ActionEvent event) {
         String selecOrden = (String) cbxOrdenar.getValue();
@@ -210,7 +213,7 @@ public class VentanaPedidosController implements Initializable {
                                 alerta.setTitle("Error en Pedidos");
                                 alerta.setHeaderText(va.getMessage());
                                 alerta.showAndWait();
-                            } catch(NumberFormatException numEx){
+                            } catch (NumberFormatException numEx) {
                                 Alert alerta = new Alert(Alert.AlertType.ERROR);
                                 alerta.setTitle("Error en Pedidos");
                                 alerta.setHeaderText("Verifique el casillero de cantidad");
@@ -232,8 +235,10 @@ public class VentanaPedidosController implements Initializable {
 
         }
     }
+
     /**
      * llena el gridpane
+     *
      * @param e gridpane
      */
 
@@ -241,13 +246,15 @@ public class VentanaPedidosController implements Initializable {
     public void llenarGridPane(ActionEvent e) {
         mostrarMenu();
     }
+
     /**
      * muestra los datos del label
+     *
      * @param subtotal subtotal
      */
 
     @FXML
-    public void mostrarDatosLabel(double subtotal){
+    public void mostrarDatosLabel(double subtotal) {
         DecimalFormat df = new DecimalFormat("#.00");
         double subAntes = Double.valueOf(lblSubtotal.getText());
         double subDesp = subAntes + subtotal;
@@ -257,8 +264,10 @@ public class VentanaPedidosController implements Initializable {
         lblIVA.setText(String.valueOf(df.format(iva)));
         lblTotal.setText(String.valueOf(df.format(total)));
     }
+
     /**
      * continua a la ventnana pago
+     *
      * @param e ActionEvent
      */
 
@@ -299,8 +308,8 @@ public class VentanaPedidosController implements Initializable {
             alerta.showAndWait();
         }
         Stage stage = (Stage) rootVPedidos.getScene().getWindow();
-                    Platform.runLater(() -> stage.close());
-                    
+        Platform.runLater(() -> stage.close());
+
     }
 
 }

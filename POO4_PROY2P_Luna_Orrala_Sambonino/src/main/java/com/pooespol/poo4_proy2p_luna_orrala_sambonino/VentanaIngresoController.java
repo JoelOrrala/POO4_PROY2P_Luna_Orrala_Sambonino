@@ -35,7 +35,7 @@ import javafx.stage.Stage;
  * @author Mr Arana
  */
 public class VentanaIngresoController implements Initializable {
-    
+
     private Cliente clienteIng;
     private static ArrayList<Cliente> listClientes = Cliente.leerClientes();
 
@@ -87,10 +87,10 @@ public class VentanaIngresoController implements Initializable {
         });
 
     }
+
     /**
      * ingresa al usuario
      */
-
 
     public void ingresar() {
         try {
@@ -108,8 +108,8 @@ public class VentanaIngresoController implements Initializable {
             stage.showAndWait();
 
         } catch (IOException ex) {
-             System.out.println(ex.getMessage());
-             ex.printStackTrace();
+            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
 
     }

@@ -12,20 +12,23 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 /**
- * Clase menú hace referencia al menú de platillos que se ofrece en el restaurante
+ * Clase menú hace referencia al menú de platillos que se ofrece en el
+ * restaurante
+ *
  * @author joelorrala
  */
-public class Menu implements Comparable<Menu>{
+public class Menu implements Comparable<Menu> {
 
     private String descripcion;
     private double precio;
     private TipoMenu tipo;
-    
+
     /**
      * Constructor de la clase Menú
+     *
      * @param descripcion
      * @param precio
-     * @param tipo 
+     * @param tipo
      */
     public Menu(String descripcion, double precio, TipoMenu tipo) {
         this.descripcion = descripcion;
@@ -34,7 +37,7 @@ public class Menu implements Comparable<Menu>{
     }
 
     /**
-     * 
+     *
      * @return descripción del plato
      */
     public String getDescripcion() {
@@ -43,47 +46,52 @@ public class Menu implements Comparable<Menu>{
 
     /**
      * Permite cambiar la descripción del plato
-     * @param descripcion 
+     *
+     * @param descripcion
      */
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    
+
     /**
-     * 
+     *
      * @return precio del plato
      */
     public double getPrecio() {
         return precio;
     }
-    
+
     /**
      * Permite cambiar el precio del plato
-     * @param precio 
+     *
+     * @param precio
      */
     public void setPrecio(double precio) {
         this.precio = precio;
     }
-    
+
     /**
-     * 
+     *
      * @return tipo de menú del plato
      */
     public TipoMenu getTipoMenu() {
         return tipo;
     }
-    
+
     /**
      * Permite cambiar el tipo de menú del plato
-     * @param tipo 
+     *
+     * @param tipo
      */
     public void setTipoMenu(TipoMenu tipo) {
         this.tipo = tipo;
     }
-    
+
     /**
-     * Leer el archivo de menu.txt, crea los respectivos objetos y los almacena en una lista para retornarlos
-     * @return 
+     * Leer el archivo de menu.txt, crea los respectivos objetos y los almacena
+     * en una lista para retornarlos
+     *
+     * @return
      */
     public static ArrayList<Menu> leerMenus() {
         ArrayList<Menu> listMenu = new ArrayList<>();
@@ -98,7 +106,7 @@ public class Menu implements Comparable<Menu>{
         }
         return listMenu;
     }
-    
+
     public static TipoMenu obtenerTipo(String s) {
 
         TipoMenu resultado = null;
@@ -121,5 +129,5 @@ public class Menu implements Comparable<Menu>{
     public int compareTo(Menu m2) {
         return this.descripcion.compareTo(m2.getDescripcion());
     }
-    
+
 }

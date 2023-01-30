@@ -57,7 +57,7 @@ public class VentanaPagoController implements Initializable {
 
     @FXML
     private Label lblmensajepago;
-    
+
     @FXML
     private Label lblmensajepago2;
 
@@ -74,11 +74,11 @@ public class VentanaPagoController implements Initializable {
     private ToggleGroup opciones;
 
     private TipoPago tipo;
-    
+
     private Cliente clienteAct;
     private Pedido pedidoCli;
     private double totalPagar = 0;
-    
+
     private TextField txt1;
     private TextField txt2;
     private TextField txt3;
@@ -118,7 +118,7 @@ public class VentanaPagoController implements Initializable {
         hbox4.getChildren().addAll(lbl4, txt4);
         hbox4.setSpacing(20);
         hbox4.setPadding(new Insets(5, 15, 10, 15));
-        
+
         DecimalFormat df = new DecimalFormat("#.00");
         vbtarjeta.getChildren().addAll(hbox1, hbox2, hbox3, hbox4, lbl5);
         vbtarjeta.setVisible(false);
@@ -143,15 +143,14 @@ public class VentanaPagoController implements Initializable {
             }
         });
 
-
         btcontinuar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent t) {
                 if (txtdireccion.getText().equals("")) {
                     lblmensajepago.setText("No ha llenado todos los campos");
-                } else if(txt1.getText().equals("") | txt2.getText().equals("") | txt3.getText().equals("") | txt4.getText().equals("")){
+                } else if (txt1.getText().equals("") | txt2.getText().equals("") | txt3.getText().equals("") | txt4.getText().equals("")) {
                     lblmensajepago.setText("Faltan datos de la tarjeta de crédito");
-                }else {
+                } else {
                     Thread threadGuardar = new Thread(new Runnable() {
                         @Override
                         public void run() {
@@ -163,7 +162,7 @@ public class VentanaPagoController implements Initializable {
                         }
                     });
                     threadGuardar.start();
-                    
+
                     Stage stage = (Stage) rootpago.getScene().getWindow();
                     Platform.runLater(() -> stage.close());
                     Continuar();
@@ -173,16 +172,17 @@ public class VentanaPagoController implements Initializable {
         });
 
     }
-    
+
     /**
      * recupera los datos del pedido
+     *
      * @param p datos pedido
      */
-
     public void recuperarDatosPedido(Pedido p) {
         this.clienteAct = p.getCliente();
         this.pedidoCli = p;
     }
+
     /**
      * continua a la despedida
      */
@@ -193,7 +193,7 @@ public class VentanaPagoController implements Initializable {
             Pane root = loader.load();
             VentanaDespedidaController controladorDespedida = loader.getController();
             controladorDespedida.recuperarDato(pedidoCli);
-            Scene scene = new Scene(root,690,470);
+            Scene scene = new Scene(root, 690, 470);
             Stage stage = new Stage();
             scene.getStylesheets().add(App.class.getResource("despedida.css").toExternalForm());
             stage.setScene(scene);
@@ -215,7 +215,7 @@ public class VentanaPagoController implements Initializable {
         txt2.clear();
         txt3.clear();
         txt4.clear();
-        
+
         lblmensajepago.setText("");
         rbtarjeta.setSelected(false);
         rbefectivo.setSelected(false);

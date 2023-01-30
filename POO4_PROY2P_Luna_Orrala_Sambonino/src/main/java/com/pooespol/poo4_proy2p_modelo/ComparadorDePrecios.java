@@ -10,8 +10,8 @@ import java.util.Comparator;
  *
  * @author joelorrala
  */
-public class ComparadorDePrecios implements Comparator<Menu>{
-    
+public class ComparadorDePrecios implements Comparator<Menu> {
+
     @Override
     public int compare(Menu m1, Menu m2) {
         int resultado = 0;
@@ -23,5 +23,5 @@ public class ComparadorDePrecios implements Comparator<Menu>{
 
         return resultado;
     }
-    
+
 }

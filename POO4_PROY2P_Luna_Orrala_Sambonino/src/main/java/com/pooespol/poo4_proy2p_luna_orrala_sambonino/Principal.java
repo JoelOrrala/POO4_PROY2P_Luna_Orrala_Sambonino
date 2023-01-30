@@ -9,6 +9,7 @@ package com.pooespol.poo4_proy2p_luna_orrala_sambonino;
  * @author Giovanni
  */
 public class Principal {
+
     public static void main(String[] args) {
         App.main(args);
     }

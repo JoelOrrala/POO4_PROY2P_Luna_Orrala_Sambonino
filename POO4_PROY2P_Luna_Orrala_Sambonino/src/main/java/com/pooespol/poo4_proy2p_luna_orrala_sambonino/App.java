@@ -27,7 +27,7 @@ public class App extends Application {
      */
     public static String pathPed = "src/main/resources/pedidos/";
     /**
-     * ruta estilos 
+     * ruta estilos
      */
     public static String pathStyles = "src/main/resources/styles/";
 
@@ -35,7 +35,7 @@ public class App extends Application {
     public void start(Stage stage) throws Exception {
         FXMLLoader fxmLoader = new FXMLLoader(App.class.getResource("VentanaIngreso.fxml"));
         Parent root = fxmLoader.load();
-        scene = new Scene(root, 690,470);
+        scene = new Scene(root, 690, 470);
         scene.getStylesheets().add(App.class.getResource("ingreso.css").toExternalForm());
         stage.setScene(scene);
         stage.setTitle("The Good Burger Restaurant");
@@ -43,12 +43,13 @@ public class App extends Application {
         stage.setResizable(false);
 
     }
+
     /**
-     * 
+     *
      * @param args main
      */
     public static void main(String[] args) {
         launch();
     }
-    
+
 }

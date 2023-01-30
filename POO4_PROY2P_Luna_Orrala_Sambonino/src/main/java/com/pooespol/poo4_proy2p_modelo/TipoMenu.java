@@ -12,15 +12,15 @@ public enum TipoMenu {
     /**
      * Plato fuerte
      */
-    F, 
+    F,
     /**
      * Postre
      */
-    P, 
+    P,
     /**
      * Bebida
      */
-    B, 
+    B,
     /**
      * Piqueo
      */

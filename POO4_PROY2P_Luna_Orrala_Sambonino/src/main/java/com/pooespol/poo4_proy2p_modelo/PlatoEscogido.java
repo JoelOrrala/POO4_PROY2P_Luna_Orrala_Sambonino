@@ -7,38 +7,42 @@ package com.pooespol.poo4_proy2p_modelo;
 import java.io.Serializable;
 
 /**
- * Hace referencia al plato seleccionado por el cliente y adicionalmente se especifica la cantidad
+ * Hace referencia al plato seleccionado por el cliente y adicionalmente se
+ * especifica la cantidad
+ *
  * @author joelorrala
  */
-public class PlatoEscogido extends Menu implements Serializable{
+public class PlatoEscogido extends Menu implements Serializable {
 
     private int cantidad;
     private double totalPlato;
-    
+
     /**
      * Constructor de clase PlatoEscogido
+     *
      * @param descripcion
      * @param precio
      * @param tipo
-     * @param cantidad 
+     * @param cantidad
      */
     public PlatoEscogido(String descripcion, double precio, TipoMenu tipo, int cantidad) {
         super(descripcion, precio, tipo);
         this.cantidad = cantidad;
         this.totalPlato = precio * cantidad;
     }
-    
+
     /**
-     * 
+     *
      * @return cantidad de platos del mismo tipo solicitados
      */
     public int getCantidad() {
         return cantidad;
     }
-    
+
     /**
      * Permite cambiar la cantidad de platos del mismo tipo solicitados
-     * @param cantidad 
+     *
+     * @param cantidad
      */
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
@@ -51,6 +55,5 @@ public class PlatoEscogido extends Menu implements Serializable{
     public void setTotalPlato(double totalPlato) {
         this.totalPlato = totalPlato;
     }
-    
-    
+
 }

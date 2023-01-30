@@ -12,6 +12,7 @@ import java.util.Date;
 
 /**
  * Hace referencia al pago que hace el cliente
+ *
  * @author joelorrala
  */
 public class Pago {
@@ -22,14 +23,15 @@ public class Pago {
     private double totalPagar;
     private Date fecha;
     private TipoPago tipo;
-    
+
     /**
      * Constructor de la clase Pago
+     *
      * @param cliente
      * @param pedido
      * @param totalPagar
      * @param fecha
-     * @param tipo 
+     * @param tipo
      */
     public Pago(Cliente cliente, Pedido pedido, double totalPagar, Date fecha, TipoPago tipo) {
         this.idPago = generarCodigoPago();
@@ -39,81 +41,85 @@ public class Pago {
         this.fecha = fecha;
         this.tipo = tipo;
     }
-    
+
     /**
-     * 
+     *
      * @return ID del pago
      */
     public String getIdPago() {
         return idPago;
     }
-    
+
     /**
      * Permite cambiar el ID del pago
-     * @param idPago 
+     *
+     * @param idPago
      */
     public void setIdPago(String idPago) {
         this.idPago = idPago;
     }
-    
+
     /**
-     * 
+     *
      * @return cliente
      */
     public Cliente getCliente() {
         return cliente;
     }
-    
+
     /**
-     * 
+     *
      * @return pedido
      */
     public Pedido getPedido() {
         return pedido;
     }
-    
+
     /**
      * Permite cambiar el pedido
-     * @param pedido 
+     *
+     * @param pedido
      */
     public void setPedido(Pedido pedido) {
         this.pedido = pedido;
     }
-    
+
     /**
-     * 
+     *
      * @return total a pagar
      */
     public double getTotalPagar() {
         return totalPagar;
     }
-    
+
     /**
      * Permite cambiar el total a pagar
-     * @param totalPagar 
+     *
+     * @param totalPagar
      */
     public void setTotalPagar(double totalPagar) {
         this.totalPagar = totalPagar;
     }
-    
+
     /**
-     * 
+     *
      * @return fecha
      */
     public Date getFecha() {
         return fecha;
     }
-    
+
     /**
      * Permite cambiar la fecha del pago
-     * @param fecha 
+     *
+     * @param fecha
      */
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-    
+
     /**
-     * 
+     *
      * @return tipo de pago que se realiza
      */
     public TipoPago getTipoPago() {
@@ -122,14 +128,16 @@ public class Pago {
 
     /**
      * Permite cambiar el tipo de pago que se realiza
-     * @param tipo 
+     *
+     * @param tipo
      */
     public void setTipoPago(TipoPago tipo) {
         this.tipo = tipo;
     }
-    
+
     /**
      * Genera un código aleatorio para un pago
+     *
      * @return código Pago
      */
     private String generarCodigoPago() {
@@ -141,7 +149,7 @@ public class Pago {
         }
         return codigo;
     }
-    
+
     /**
      * Permite guardar los datos del objeto pago dentro de un archivo txt
      */

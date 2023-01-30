@@ -11,8 +11,9 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
-/** Esta clase hace referencia a los locales que se encuentran distribuidos en la ciudad, a los cuales
- * el cliente puede ir
+/**
+ * Esta clase hace referencia a los locales que se encuentran distribuidos en la
+ * ciudad, a los cuales el cliente puede ir
  *
  * @author joelorrala
  */
@@ -24,9 +25,10 @@ public class Local {
     private double coordenadaX;
     private double coordenadaY;
     private static ArrayList<Local> listLocales;
-    
+
     /**
      * Constructor de la clase Local
+     *
      * @param nombre del local
      * @param direccion del local
      * @param horario del local
@@ -40,17 +42,18 @@ public class Local {
         this.coordenadaX = coordenadaX;
         this.coordenadaY = coordenadaY;
     }
-    
+
     /**
-     * 
+     *
      * @return nombre del local
      */
     public String getNombre() {
         return nombre;
     }
-    
+
     /**
      * Permite cambiar el nombre del local
+     *
      * @param nombre
      */
     public void setNombre(String nombre) {
@@ -58,71 +61,77 @@ public class Local {
     }
 
     /**
-     * 
+     *
      * @return dirección del local
      */
     public String getDireccion() {
         return direccion;
     }
-    
+
     /**
      * Permite cambiar la dirección del local
-     * @param direccion 
+     *
+     * @param direccion
      */
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-    
+
     /**
-     * 
+     *
      * @return horario del local
      */
     public String getHorario() {
         return horario;
     }
-    
+
     /**
      * Permite cambiar el horario del local
-     * @param horario 
+     *
+     * @param horario
      */
     public void setHorario(String horario) {
         this.horario = horario;
     }
-    
+
     /**
-     * 
+     *
      * @return coordenada X del local dentro del mapa
      */
     public double getCoordenadaX() {
         return coordenadaX;
     }
-    
+
     /**
      * Permite cambiar la coordenada X del local dentro del mapa
-     * @param coordenadaX 
+     *
+     * @param coordenadaX
      */
     public void setCoordenadaX(double coordenadaX) {
         this.coordenadaX = coordenadaX;
     }
-    
+
     /**
-     * 
+     *
      * @return coordenada Y del local dentro del mapa
      */
     public double getCoordenadaY() {
         return coordenadaY;
     }
-    
+
     /**
      * Permite cambiar la coordenada Y del local dentro del mapa
-     * @param coordenadaY 
+     *
+     * @param coordenadaY
      */
     public void setCoordenadaY(double coordenadaY) {
         this.coordenadaY = coordenadaY;
     }
-    
+
     /**
-     * Leer el archivo de locales.txt, crea los respectivos objetos y los almacena en una lista para retornarlos
+     * Leer el archivo de locales.txt, crea los respectivos objetos y los
+     * almacena en una lista para retornarlos
+     *
      * @return lista Locales
      */
     public static ArrayList<Local> leerLocales() {

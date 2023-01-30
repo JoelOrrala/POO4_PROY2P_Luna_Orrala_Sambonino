@@ -12,18 +12,22 @@ import java.io.Serializable;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
-/** La clase Cliente hace referencia al usuario que se encuentra utilizando la app
+/**
+ * La clase Cliente hace referencia al usuario que se encuentra utilizando la
+ * app
  *
  * @author joelorrala
  */
-public class Cliente implements Serializable{
+public class Cliente implements Serializable {
 
     private String nombre;
     private String usuario;
     private String contrasenia;
-    
+
     /**
-     * Constructor de la clase Cliente que recibe los datos nombre, usuario y contraseña
+     * Constructor de la clase Cliente que recibe los datos nombre, usuario y
+     * contraseña
+     *
      * @param nombre nombre del cliente
      * @param usuario usuario del cliente
      * @param contrasenia contraseña del cliente
@@ -33,57 +37,62 @@ public class Cliente implements Serializable{
         this.usuario = usuario;
         this.contrasenia = contrasenia;
     }
-    
+
     /**
-     * 
+     *
      * @return nombre del cliente
      */
     public String getNombre() {
         return nombre;
     }
-    
+
     /**
      * Permite cambiar el nombre del cliente
-     * @param nombre 
+     *
+     * @param nombre
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
+
     /**
-     * 
+     *
      * @return usuario del cliente
      */
     public String getUsuario() {
         return usuario;
     }
-    
+
     /**
      * Permite cambiar el usuario del cliente
-     * @param usuario 
+     *
+     * @param usuario
      */
     public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
-    
+
     /**
-     * 
+     *
      * @return contraseña del cliente
      */
     public String getContrasenia() {
         return contrasenia;
     }
-    
+
     /**
      * Permite cambiar la contraseña del cliente
+     *
      * @param contrasenia
      */
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
     }
-    
+
     /**
-     * Leer el archivo de usuarios.txt, crea los respectivos objetos y los almacena en una lista para retornarlos
+     * Leer el archivo de usuarios.txt, crea los respectivos objetos y los
+     * almacena en una lista para retornarlos
+     *
      * @return lista de objetos tipo Cliente
      */
     public static ArrayList<Cliente> leerClientes() {
@@ -99,9 +108,11 @@ public class Cliente implements Serializable{
         }
         return listCli;
     }
-    
+
     /**
-     * Verifica si el cliente se encuentra entre los usuarios registrados en una lista recibida como parámetro
+     * Verifica si el cliente se encuentra entre los usuarios registrados en una
+     * lista recibida como parámetro
+     *
      * @param listaClientes
      * @param usuario
      * @param contrasenia
@@ -116,7 +127,7 @@ public class Cliente implements Serializable{
         }
         return encontrado;
     }
-    
+
     public static Cliente retornarCliente(ArrayList<Cliente> listaClientes, String usuario, String contrasenia) {
         Cliente cliente = null;
         for (Cliente c : listaClientes) {

@@ -32,33 +32,31 @@ public class VentanaDespedidaController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    
-    @FXML 
+    @FXML
     Label lblMensajeDespedida;
-    
-    @FXML 
+
+    @FXML
     ImageView imgdespedida;
-    
+
     @FXML
     Label lblCerrarventana;
-    
+
     @FXML
     VBox _rootdespedida;
-    
 
     private Pedido pedido;
-    
+
     /**
      * inicia la ventana
-     * @param url url   
+     *
+     * @param url url
      * @param rb ResourceBundle
      */
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
-        try ( FileInputStream input = new FileInputStream(new File(App.pathImg+"delivery_final.png"))) {
+
+        try ( FileInputStream input = new FileInputStream(new File(App.pathImg + "delivery_final.png"))) {
             Image img2 = new Image(input);
             imgdespedida.setImage(img2);
         } catch (FileNotFoundException fnf) {
@@ -67,22 +65,24 @@ public class VentanaDespedidaController implements Initializable {
             System.out.println("Io Exception");
         }
         crearThreadNuevaVentana(lblCerrarventana);
-        
-        
-        
+
     }
-/**
- * recupera dato del pago
- * @param p recuperardato
- */
+
+    /**
+     * recupera dato del pago
+     *
+     * @param p recuperardato
+     */
     public void recuperarDato(Pedido p) {
         this.pedido = p;
-        lblMensajeDespedida.setText("Su pedido N° "+pedido.getIdPedido()+" ha sido pagado con éxito y ahora empezaremos a prepararlo.\n" 
-                    +"En aproximadamente 30 minutos llegará a su destino.\n"
-                    +"Gracias por preferirnos.");
+        lblMensajeDespedida.setText("Su pedido N° " + pedido.getIdPedido() + " ha sido pagado con éxito y ahora empezaremos a prepararlo.\n"
+                + "En aproximadamente 30 minutos llegará a su destino.\n"
+                + "Gracias por preferirnos.");
     }
- /**
+
+    /**
      * crea el hilo para cerrar la ventana
+     *
      * @param labelCont label hilo
      */
 
@@ -91,7 +91,7 @@ public class VentanaDespedidaController implements Initializable {
             @Override
             public void run() {
                 for (int i = 5; i > -1; i--) {
-                    String mensaje = "Cerrando en "+ i + ".....";
+                    String mensaje = "Cerrando en " + i + ".....";
                     Platform.runLater(new Runnable() {
                         @Override
                         public void run() {
@@ -100,16 +100,16 @@ public class VentanaDespedidaController implements Initializable {
                     });
                     try {
                         Thread.sleep(1000);
-                        
+
                     } catch (InterruptedException ex) {
                     }
                 }
-                Stage stage = (Stage)_rootdespedida.getScene().getWindow();
+                Stage stage = (Stage) _rootdespedida.getScene().getWindow();
                 Platform.runLater(() -> stage.close());
             }
         });
         t2.start();
-        
+
     }
 
 }
